@@ -67,6 +67,7 @@ const tips = computed(() => [
 
 <template>
   <BaseTemplate
+    v-if="!(themeEnhanceConfig.spotlight?.hidden ?? themeEnhanceConfig.hidden ?? false)"
     :icon="clickIcon"
     :title="t('tk.themeEnhance.spotlight.title')"
     :helper="!themeEnhanceConfig.spotlight?.disableHelp"

@@ -58,7 +58,10 @@ const tips = computed(() =>
 </script>
 
 <template>
-  <Transition :name="transitionName">
+  <Transition
+    v-if="!(themeEnhanceConfig.spotlight?.hidden ?? themeEnhanceConfig.hidden ?? false)"
+    :name="transitionName"
+  >
     <BaseTemplate
       v-if="spotlightToggledOn"
       :icon="clickIcon"

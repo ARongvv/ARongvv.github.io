@@ -266,6 +266,25 @@
         }
       }
 
+      // vitepress 2.0.x 以上版本兼容
+      .VPNavBarSearch .VPNavBarSearchButton {
+        background-color: transparent;
+
+        .vpi-search,
+        .text,
+        .#{$namespace}-icon {
+          color: var(--vp-c-white);
+        }
+
+        .keys {
+          color: var(--vp-c-white);
+          border: none;
+          &::after {
+            color: var(--vp-c-white);
+          }
+        }
+      }
+
       .VPNavBarTranslations {
         .text {
           color: getCssVar("article-banner-text-color");

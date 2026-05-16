@@ -61,7 +61,10 @@ const tips = computed(() => [
 </script>
 
 <template>
-  <Transition :name="transitionName">
+  <Transition
+    v-if="!(themeEnhanceConfig.layoutSwitch?.hidden ?? themeEnhanceConfig.hidden ?? false)"
+    :name="transitionName"
+  >
     <BaseTemplate
       v-show="layoutMode === LayoutMode.SidebarWidthAdjustableOnly || layoutMode === LayoutMode.BothWidthAdjustable"
       :icon="autoWidthIcon"

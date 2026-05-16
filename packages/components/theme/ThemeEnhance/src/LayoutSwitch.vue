@@ -114,6 +114,7 @@ const tips = computed(() =>
 
 <template>
   <BaseTemplate
+    v-if="!(themeEnhanceConfig.layoutSwitch?.hidden ?? themeEnhanceConfig.hidden ?? false)"
     :icon="layoutIcon"
     :title="t('tk.themeEnhance.layoutSwitch.title')"
     :helper="!themeEnhanceConfig.layoutSwitch?.disableHelp"

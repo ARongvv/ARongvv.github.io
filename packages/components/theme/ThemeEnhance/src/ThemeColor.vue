@@ -117,6 +117,7 @@ const getStyle = (color: string | undefined) => {
 
 <template>
   <BaseTemplate
+    v-if="!(themeEnhanceConfig.themeColor?.hidden ?? themeEnhanceConfig.hidden ?? false)"
     :class="ns.e('theme-color')"
     :icon="waterIcon"
     :title="t('tk.themeEnhance.themeColor.title')"

@@ -15,6 +15,13 @@ export interface ThemeEnhance {
    */
   enabled?: boolean;
   /**
+   * 隐藏主题增强功能，但是仍然可以设置默认值
+   *
+   * @default false
+   * @since 1.5.8
+   */
+  hidden?: boolean;
+  /**
    * 位置，top 为导航栏右侧，bottom 为右下角
    *
    * @default 'top'
@@ -30,6 +37,13 @@ export interface ThemeEnhance {
      * @default false
      */
     disabled?: boolean;
+    /**
+     * 隐藏布局切换配置，但是仍然可以设置默认值
+     *
+     * @default false
+     * @since 1.5.8
+     */
+    hidden?: boolean;
     /**
      * 布局切换的默认模式
      *
@@ -89,6 +103,13 @@ export interface ThemeEnhance {
      * @default false
      */
     disabled?: boolean;
+    /**
+     * 隐藏布局主题色配置，但是仍然可以设置默认值
+     *
+     * @default false
+     * @since 1.5.8
+     */
+    hidden?: boolean;
     /**
      * 从 0 完全自定义布局主题色，不使用内置主题色
      *
@@ -179,6 +200,13 @@ export interface ThemeEnhance {
      * @default false
      */
     disabled?: boolean;
+    /**
+     * 隐藏聚光灯配置，但是仍然可以设置默认值
+     *
+     * @default false
+     * @since 1.5.8
+     */
+    hidden?: boolean;
     /**
      * 聚光灯默认样式
      *
