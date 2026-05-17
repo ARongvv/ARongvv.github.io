@@ -25,7 +25,7 @@ const { frontmatter } = useData();
 
 // Banner 配置项
 const bannerConfig = getTeekConfigRef<Required<Banner>>("banner", {
-  bgStyle: "pure",
+  bgStyle: "partImg",
   imgWaves: true,
   textColor: "#ffffff",
   titleFontSize: "3.2rem",

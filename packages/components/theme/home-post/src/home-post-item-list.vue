@@ -11,7 +11,7 @@ defineOptions({ name: "HomePostItemList" });
 
 const ns = useNamespace("post-item-list");
 const { t } = useLocale();
-const { post, coverImgMode } = defineProps<{ post: TkContentData; coverImgMode: "default" | "full" }>();
+const { post, coverImgMode } = defineProps<{ post: TkContentData; coverImgMode: "small" | "full" }>();
 
 const { getTeekConfigRef } = useTeekConfig();
 
@@ -38,7 +38,7 @@ const imgSrcList = computed(() => [post.frontmatter.coverImg || postConfig.value
 const coverImgMap = computed(() => {
   const imgSrc = imgSrcList.value[Math.floor(Math.random() * imgSrcList.value.length)];
   return {
-    default: {
+    small: {
       is: "div",
       props: {
         style: `background-image: url(${withBase(imgSrc)});`,

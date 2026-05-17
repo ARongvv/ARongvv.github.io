@@ -35,9 +35,9 @@ export interface Post {
   /**
    * 文章封面图模式
    *
-   * @default 'default'
+   * @default 'small'
    */
-  coverImgMode?: "default" | "full";
+  coverImgMode?: "small" | "full";
   /**
    * 是否在摘要位置显示文章部分文字，当为 true 且不使用 frontmatter.describe 和 <!-- more --> 时，会自动截取前 300 个字符作为摘要
    *

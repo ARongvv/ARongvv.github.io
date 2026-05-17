@@ -104,7 +104,7 @@
   @include e(right) {
     .cover {
       cursor: pointer;
-      &.default .cover-img {
+      &.small .cover-img {
         width: getCssVar("home-post-simple-img-width");
         height: getCssVar("home-post-simple-img-height");
         border-radius: 2px;

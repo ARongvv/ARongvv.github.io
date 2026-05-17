@@ -25,6 +25,7 @@ const dataArray = computed(() => {
   const imgSrc = bodyBgImgConfig.value.imgSrc;
   return [isFunction(imgSrc) ? imgSrc() : imgSrc || []].flat().map(item => item && withBase(item));
 });
+
 // body 背景图片定时轮播
 const {
   data: imageSrc,
@@ -45,6 +46,7 @@ const {
 });
 
 onMounted(() => {
+  console.log(1);
   start();
 });
 

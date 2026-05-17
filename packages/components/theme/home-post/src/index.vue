@@ -24,7 +24,7 @@ const { frontmatter } = useData();
 
 const postConfig = getTeekConfigRef<Required<Post>>("post", {
   postStyle: "list",
-  coverImgMode: "default",
+  coverImgMode: "full",
   emptyLabel: t("tk.homePost.emptyLabel"),
   transition: true,
   transitionName: ns.join("slide-fade"),
@@ -40,7 +40,7 @@ const coverImgMode = ref(postConfig.value.coverImgMode);
 const isPaging = defineModel({ default: false });
 
 const defaultPageSize = computed(() => (postConfig.value.postStyle === "list" ? 10 : 15));
-const pageSize = computed(() => pageConfig.value.pageSize || defaultPageSize.value);
+const pageSize = computed(() => pageConfig.value.pageSize ?? defaultPageSize.value);
 
 const route = useRoute();
 const currentPosts = ref<TkContentData[]>([]);
@@ -84,6 +84,7 @@ const updateData = () => {
 };
 
 watch(() => route.path, updateData, { immediate: true });
+watch(pageSize, updateData);
 
 /**
  * 切换分页时，记录到 URL 上
@@ -125,7 +126,7 @@ useWindowSize(width => {
   } else if (pagePropsRef.layout !== layout) pagePropsRef.layout = layout;
 
   if (width <= 960) {
-    if (coverImgMode.value !== "default") coverImgMode.value = "default";
+    if (coverImgMode.value !== "small") coverImgMode.value = "small";
   } else if (coverImgMode.value !== postConfig.value.coverImgMode) coverImgMode.value = postConfig.value.coverImgMode;
 });
 
@@ -142,7 +143,7 @@ defineExpose({ updateData });
 </script>
 
 <template>
-  <div :class="[ns.b(), ns.is('card', postConfig.postStyle === 'card')]">
+  <div :class="[ns.b(), ns.is(postConfig.postStyle)]">
     <template v-if="currentPosts">
       <slot name="teek-home-post" v-bind="{ currentPosts, transitionName: postConfig.transitionName }">
         <TransitionGroup

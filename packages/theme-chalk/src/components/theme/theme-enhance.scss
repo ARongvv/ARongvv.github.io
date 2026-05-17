@@ -50,6 +50,7 @@
 
   @include e(theme-color) {
     .label {
+      font-weight: 400;
       margin-right: 10px;
     }
 
@@ -98,6 +99,7 @@
     padding-right: 16px;
     user-select: none;
     gap: 4px;
+    font-weight: 700;
 
     @include is(disabled) {
       opacity: 0.5;
@@ -207,4 +209,9 @@
     transform: translateY(-15px);
     opacity: 0;
   }
+}
+
+@include b(theme-enhance__popover) {
+  @include set-css-var("segmented-item-active-text", getCssVar("bg-color-elm"));
+  @include set-css-var("segmented-item-active-bg", var(--vp-c-brand-1));
 }

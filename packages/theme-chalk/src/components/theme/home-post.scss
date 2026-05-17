@@ -15,6 +15,25 @@
     }
   }
 
+  @include is(list) {
+    @include b(article-title) {
+      &::before {
+        content: "";
+        width: 2.5px;
+        height: 14px;
+        display: inline-block;
+        background-color: var(--vp-c-brand-3);
+        position: absolute;
+        left: 14px;
+        top: 21px;
+
+        &:hover {
+          background-color: var(--vp-c-brand-1);
+        }
+      }
+    }
+  }
+
   @include e(empty) {
     padding: 24px;
     margin: 0.5px;

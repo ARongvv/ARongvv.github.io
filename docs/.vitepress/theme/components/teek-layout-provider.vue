@@ -1,6 +1,6 @@
 <script setup lang="ts" name="TeekLayoutProvider">
 import type { TeekConfig } from "vitepress-theme-teek";
-import Teek, { teekConfigContext, clockIcon } from "vitepress-theme-teek";
+import Teek, { teekConfigContext, clockIcon, TkMessage } from "vitepress-theme-teek";
 import { useData } from "vitepress";
 import { watch, nextTick, ref, provide } from "vue";
 import { teekDocConfig } from "../config/teek-config";
@@ -10,6 +10,7 @@ import ConfigSwitch from "./config-switch.vue";
 import ContributeChart from "./contribute-chart.vue";
 import NotFound from "./404.vue";
 import CalendarCard from "./calendar-card.vue";
+import ThemeSetting, { type ChangeType } from "./theme-setting.vue";
 
 const ns = "layout-provider";
 const { frontmatter } = useData();
@@ -51,14 +52,39 @@ const handleConfigSwitch = (config: TeekConfig, style: string) => {
 
   setTimeout(() => watchRuntimeAndRibbon(frontmatter.value.layout, style), 700);
 };
+
+const handleThemeSettingChange = (config: TeekConfig, type: ChangeType) => {
+  if (type === "bannerWallpaper") {
+    teekConfig.value.teekHome = config.teekHome;
+    teekConfig.value.vpHome = config.vpHome;
+    teekConfig.value.banner = { ...teekConfig.value.banner, ...config.banner };
+    teekConfig.value.bodyBgImg = { ...teekConfig.value.bodyBgImg, ...config.bodyBgImg };
+
+    if (config.teekHome) setTimeout(() => watchRuntimeAndRibbon(frontmatter.value.layout, "blog"), 700);
+    else setTimeout(() => watchRuntimeAndRibbon(frontmatter.value.layout, ""), 700);
+  } else if (type === "bannerDescStyle") teekConfig.value.banner = { ...teekConfig.value.banner, ...config.banner };
+  else if (type === "postStyle") teekConfig.value.post = { ...teekConfig.value.post, ...config.post };
+  else if (type === "homeCardListPosition") teekConfig.value.homeCardListPosition = config.homeCardListPosition;
+  else if (type === "pageStyle") teekConfig.value.pageStyle = config.pageStyle;
+  else if (type === "postCoverImgMode") teekConfig.value.post = { ...teekConfig.value.post, ...config.post };
+  else if (type === "themeSize") teekConfig.value.themeSize = config.themeSize;
+  else if (type === "bannerImgWaves") teekConfig.value.banner = { ...teekConfig.value.banner, ...config.banner };
+  else if (type === "loading") teekConfig.value.loading = config.loading;
+  else if (type === "comment") teekConfig.value.comment = config.comment;
+
+  TkMessage.success({
+    message: "切换配置成功！",
+    customClass: "antd",
+  });
+};
 </script>
 
 <template>
   <Teek.Layout>
     <template #teek-theme-enhance-bottom>
-      <div :class="[ns, 'flx-align-center']">
-        <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
-      </div>
+      <!-- <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" /> -->
+
+      <ThemeSetting @change="handleThemeSettingChange" />
     </template>
 
     <template #teek-home-card-my-after>

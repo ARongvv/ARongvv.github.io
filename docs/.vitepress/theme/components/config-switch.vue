@@ -1,6 +1,12 @@
 <script setup lang="ts" name="ConfigSwitch">
-import { TkSegmented, TkMessage, magicIcon, isClient, useCommon } from "vitepress-theme-teek";
-import BaseTemplate from "@teek/components/theme/theme-enhance/src/components/base-template.vue";
+import {
+  TkSegmented,
+  TkMessage,
+  magicIcon,
+  isClient,
+  useCommon,
+  TkThemeEnhanceBaseTemplate,
+} from "vitepress-theme-teek";
 import { nextTick, ref, watch } from "vue";
 import { useClipboard, useStorage } from "@teek/composables";
 import {
@@ -89,7 +95,7 @@ const handleCopy = async () => {
 </script>
 
 <template>
-  <BaseTemplate
+  <TkThemeEnhanceBaseTemplate
     :class="ns"
     :icon="magicIcon"
     :title="tipInfo.title"
@@ -104,7 +110,7 @@ const handleCopy = async () => {
       </div>
     </template>
     <TkSegmented v-model="currentStyle" :options="segmentedOptions" />
-  </BaseTemplate>
+  </TkThemeEnhanceBaseTemplate>
 </template>
 
 <style lang="scss">
