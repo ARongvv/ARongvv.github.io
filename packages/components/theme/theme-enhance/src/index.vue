@@ -1,6 +1,6 @@
 <script setup lang="ts" name="ThemeEnhance">
 import type { ThemeEnhance } from "@teek/config";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { readingIcon } from "@teek/static";
 import { useMediaQuery } from "@teek/composables";
 import { useTeekConfig } from "@teek/components/theme/config-provider";
