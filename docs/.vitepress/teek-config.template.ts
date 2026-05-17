@@ -209,6 +209,7 @@ export const teekConfig = defineTeekConfig({
     autoPage: false, // 是否自动翻页
     pageSpeed: 4000, // 翻页间隔时间，单位：毫秒。autoPage 为 true 时生效
     dateFormat: "yyyy-MM-dd hh:mm:ss", // 精选文章的日期格式
+    dateUTC: true, // 是否使用 UTC 时间
   },
   // 分类卡片配置
   category: {
@@ -352,6 +353,7 @@ export const teekConfig = defineTeekConfig({
   articleAnalyze: {
     showIcon: true, // 作者、日期、分类、标签、字数、阅读时长、浏览量等文章信息的图标是否显示
     dateFormat: "yyyy-MM-dd hh:mm:ss", // 文章日期格式，首页和文章页解析日期时使用
+    dateUTC: true, // 是否使用 UTC 时间
     showInfo: true, // 是否展示作者、日期、分类、标签、字数、阅读时长、浏览量等文章信息，分别作用于首页和文章页
     showAuthor: true, // 是否展示作者
     showCreateDate: true, // 是否展示创建日期

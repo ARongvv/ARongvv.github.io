@@ -8,6 +8,8 @@
 
 ### issue
 
+- [#204](https://github.com/Kele-Bingtang/vitepress-theme-teek/issues/204)：`frontmatter.date` 不存在时，获取文件的最后更新时间而不是当前逻辑的文件创建时间
+
 ### 已完成
 
 ## AR

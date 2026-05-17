@@ -193,6 +193,7 @@ const pageStyle: ThemeEnhanceConfig = {
   ],
   change(value: TeekConfig["pageStyle"]) {
     teekConfig.value.pageStyle = value;
+    teekConfig.value.themeEnhance = { ...teekConfig.value.themeEnhance, layoutSwitch: { defaultMode: "original" } };
     change("pageStyle");
   },
 };

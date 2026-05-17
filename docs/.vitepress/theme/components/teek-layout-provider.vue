@@ -56,8 +56,10 @@ const handleThemeConfigChange = (config: TeekConfig, type: ChangeType) => {
   } else if (type === "bannerDescStyle") teekConfig.value.banner = { ...teekConfig.value.banner, ...config.banner };
   else if (type === "postStyle") teekConfig.value.post = { ...teekConfig.value.post, ...config.post };
   else if (type === "homeCardListPosition") teekConfig.value.homeCardListPosition = config.homeCardListPosition;
-  else if (type === "pageStyle") teekConfig.value.pageStyle = config.pageStyle;
-  else if (type === "postCoverImgMode") teekConfig.value.post = { ...teekConfig.value.post, ...config.post };
+  else if (type === "pageStyle") {
+    teekConfig.value.pageStyle = config.pageStyle;
+    teekConfig.value.themeEnhance = { ...teekConfig.value.themeEnhance, ...config.themeEnhance };
+  } else if (type === "postCoverImgMode") teekConfig.value.post = { ...teekConfig.value.post, ...config.post };
   else if (type === "themeSize") teekConfig.value.themeSize = config.themeSize;
   else if (type === "bannerImgWaves") teekConfig.value.banner = { ...teekConfig.value.banner, ...config.banner };
   else if (type === "loading") teekConfig.value.loading = config.loading;
