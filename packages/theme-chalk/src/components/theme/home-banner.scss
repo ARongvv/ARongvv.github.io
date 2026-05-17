@@ -10,7 +10,7 @@
 @use "./home-banner-waves";
 
 :root {
-  @include set-css-var("home-banner-part-min-height", 450px);
+  @include set-css-var(home-banner-part-min-height, 450px);
   // 网状背景图
   @include set-css-var(
     "bg-img-default",
@@ -60,7 +60,7 @@
 
     &.active,
     &:hover {
-      color: getCssVar("theme-color");
+      color: getCssVar(theme-color);
     }
   }
 

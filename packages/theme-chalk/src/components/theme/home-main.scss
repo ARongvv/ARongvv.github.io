@@ -4,8 +4,8 @@
 @include b(home-main) {
   @include e(content) {
     margin: 48px auto 0;
-    max-width: getCssVar("home-max-width");
-    gap: getCssVar("home-gap");
+    max-width: getCssVar(home-max-width);
+    gap: getCssVar(home-gap);
 
     @include e(content__post) {
       flex: 1;

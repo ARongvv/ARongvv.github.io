@@ -3,8 +3,8 @@
 @use "../../mixins/mixins" as *;
 
 :root {
-  @include set-css-var("code-block-fold-height", 40px);
-  @include set-css-var("code-block-lang-transform", uppercase);
+  @include set-css-var(code-block-fold-height, 40px);
+  @include set-css-var(code-block-lang-transform, uppercase);
 }
 
 html[code-block="#{$namespace}"] {
@@ -25,15 +25,15 @@ html[code-block="#{$namespace}"] {
 
   .vp-doc *:not(.#{$namespace}-vp-code) > div[class*="language-"],
   .#{$namespace}-postItem__info__left__excerpt div[class*="language-"] {
-    transition: height getCssVar("transition-duration") ease-in-out;
+    transition: height getCssVar(transition-duration) ease-in-out;
     overflow: hidden;
 
     .shiki {
-      padding-top: getCssVar("code-block-fold-height");
+      padding-top: getCssVar(code-block-fold-height);
     }
 
     .line-numbers-wrapper {
-      margin-top: getCssVar("code-block-fold-height");
+      margin-top: getCssVar(code-block-fold-height);
       padding-top: 0;
     }
 
@@ -42,7 +42,7 @@ html[code-block="#{$namespace}"] {
       content: "";
       display: block;
       position: absolute;
-      top: calc(getCssVar("code-block-fold-height") / 2);
+      top: calc(getCssVar(code-block-fold-height) / 2);
       left: 14px;
       transform: translateY(-50%);
       width: 12px;
@@ -58,12 +58,12 @@ html[code-block="#{$namespace}"] {
     span.lang {
       position: absolute;
       z-index: 3;
-      top: calc(getCssVar("code-block-fold-height") / 2);
+      top: calc(getCssVar(code-block-fold-height) / 2);
       left: 75px;
       transform: translateY(-50%);
       font-size: 18px;
       color: var(--vp-c-text-1);
-      text-transform: getCssVar("code-block-lang-transform");
+      text-transform: getCssVar(code-block-lang-transform);
       font-weight: bold;
       width: fit-content;
     }
@@ -73,7 +73,7 @@ html[code-block="#{$namespace}"] {
       width: 18px;
       height: 18px;
       position: absolute;
-      top: calc(getCssVar("code-block-fold-height") / 2);
+      top: calc(getCssVar(code-block-fold-height) / 2);
       right: 36px;
       transform: translateY(-50%);
       opacity: 1;
@@ -95,10 +95,10 @@ html[code-block="#{$namespace}"] {
       cursor: pointer;
       position: absolute;
       z-index: 3;
-      top: calc(getCssVar("code-block-fold-height") / 2);
+      top: calc(getCssVar(code-block-fold-height) / 2);
       right: 14px;
       transform: translateY(-50%);
-      transition: all getCssVar("transition-duration");
+      transition: all getCssVar(transition-duration);
       user-select: none;
       color: var(--vp-c-text-2);
 
@@ -133,8 +133,8 @@ html[code-block="#{$namespace}"] {
       color: rgba(255, 255, 255, 0.9);
       font-size: 20px;
       transition:
-        opacity getCssVar("transition-duration") ease,
-        color getCssVar("transition-duration") ease;
+        opacity getCssVar(transition-duration) ease,
+        color getCssVar(transition-duration) ease;
       padding: 0 24px;
 
       &:hover {

@@ -19,11 +19,11 @@
     margin: 32px 0;
 
     @include m(year) {
-      border-bottom: 1px solid getCssVar("line-color");
+      border-bottom: 1px solid getCssVar(line-color);
       margin-top: 32px;
       position: sticky;
       top: var(--vp-nav-height);
-      background-color: getCssVar("bg-color");
+      background-color: getCssVar(bg-color);
       z-index: 1;
 
       .year {
@@ -37,7 +37,7 @@
       margin-top: 16px;
 
       @include m(month) {
-        border-bottom: 1px solid getCssVar("line-color");
+        border-bottom: 1px solid getCssVar(line-color);
         margin-top: 16px;
         .month {
           padding-bottom: 8px;
@@ -51,11 +51,11 @@
           line-height: 2;
           a {
             display: block;
-            transition: padding getCssVar("transition-duration");
+            transition: padding getCssVar(transition-duration);
             &:hover {
               padding-left: 16px;
-              color: getCssVar("theme-color");
-              background: getCssVar("fill-color-light");
+              color: getCssVar(theme-color);
+              background: getCssVar(fill-color-light);
             }
 
             .date {

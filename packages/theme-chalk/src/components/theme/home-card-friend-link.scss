@@ -3,13 +3,13 @@
 @use "../../mixins/mixins" as *;
 
 :root {
-  @include set-css-var("home-friend-link-gap", getCssVar("gap2"));
+  @include set-css-var(home-friend-link-gap, getCssVar(gap2));
 }
 
 @include b(friend-link) {
   @include e(list) {
     position: relative;
-    gap: getCssVar("home-friend-link-gap");
+    gap: getCssVar(home-friend-link-gap);
     padding-right: 5px;
 
     @include e(list__item) {
@@ -35,11 +35,11 @@
         /* 指定最小宽度，让文字溢出后显示 ... */
         min-width: 0;
         .friend-name {
-          font-size: getCssVar("home-font-size-middle");
+          font-size: getCssVar(home-font-size-middle);
           font-weight: 450;
         }
         .friend-desc {
-          font-size: getCssVar("home-font-size-middle");
+          font-size: getCssVar(home-font-size-middle);
           color: var(--vp-c-text-2);
         }
       }
@@ -47,7 +47,7 @@
   }
 
   @include m(empty) {
-    font-size: getCssVar("home-font-size-middle");
+    font-size: getCssVar(home-font-size-middle);
     padding: 6px;
     text-align: center;
   }

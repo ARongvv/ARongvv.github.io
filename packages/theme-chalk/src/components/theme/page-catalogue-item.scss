@@ -10,7 +10,7 @@
   @include e(title) {
     /* # 样式 */
     .anchor {
-      color: getCssVar("theme-color");
+      color: getCssVar(theme-color);
       font-size: 0.85em;
       margin-left: -1em;
       padding-right: 0.38em;
@@ -46,9 +46,9 @@
   width: 48%;
   margin-bottom: 8px;
   a {
-    color: getCssVar("theme-color");
+    color: getCssVar(theme-color);
     &:hover {
-      color: getCssVar("theme-color");
+      color: getCssVar(theme-color);
     }
   }
 

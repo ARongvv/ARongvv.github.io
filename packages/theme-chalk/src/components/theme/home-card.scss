@@ -3,7 +3,7 @@
 @use "../../mixins/mixins" as *;
 
 :root {
-  @include set-css-var("home-info-gap", getCssVar("gap1"));
+  @include set-css-var(home-info-gap, getCssVar(gap1));
 }
 
 @include b(home-card) {

@@ -8,14 +8,14 @@
   width: 100%;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: getCssVar("card-shadow");
+  box-shadow: getCssVar(card-shadow);
   transition:
-    box-shadow getCssVar("transition-duration-slow") cubic-bezier(0.4, 0, 0.2, 1),
-    transform getCssVar("transition-duration-slow") cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: getCssVar("bg-color-elm");
+    box-shadow getCssVar(transition-duration-slow) cubic-bezier(0.4, 0, 0.2, 1),
+    transform getCssVar(transition-duration-slow) cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: getCssVar(bg-color-elm);
 
   &:hover {
-    box-shadow: getCssVar("hover-shadow");
+    box-shadow: getCssVar(hover-shadow);
     transform: scale(1.01);
   }
 
@@ -34,7 +34,7 @@
       position: absolute;
       width: 120%;
       height: 30px;
-      background-image: linear-gradient(45deg, getCssVar("theme-color"), getCssVar("theme-color"));
+      background-image: linear-gradient(45deg, getCssVar(theme-color), getCssVar(theme-color));
       transform: rotate(-45deg) translateY(-20px);
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
     }
@@ -61,20 +61,20 @@
     margin: 8px 0;
 
     &.bottom {
-      border-top: 1px solid getCssVar("line-color");
+      border-top: 1px solid getCssVar(line-color);
       .excerpt {
         overflow: hidden;
         display: -webkit-box;
         margin: 8px 0;
         text-overflow: ellipsis;
         -webkit-box-orient: vertical;
-        line-clamp: getCssVar("home-post-line-clamp");
-        -webkit-line-clamp: getCssVar("home-post-line-clamp");
+        line-clamp: getCssVar(home-post-line-clamp);
+        -webkit-line-clamp: getCssVar(home-post-line-clamp);
       }
     }
 
     .excerpt {
-      color: getCssVar("text-color-secondary");
+      color: getCssVar(text-color-secondary);
       font-size: 14px;
       h1,
       h2,
@@ -96,7 +96,7 @@
       margin-right: 16px;
 
       &:hover {
-        color: getCssVar("theme-color");
+        color: getCssVar(theme-color);
       }
     }
   }
@@ -105,8 +105,8 @@
     .cover {
       cursor: pointer;
       &.small .cover-img {
-        width: getCssVar("home-post-simple-img-width");
-        height: getCssVar("home-post-simple-img-height");
+        width: getCssVar(home-post-simple-img-width);
+        height: getCssVar(home-post-simple-img-height);
         border-radius: 2px;
         margin-right: 24px;
         background-repeat: no-repeat;
@@ -116,10 +116,10 @@
       &.full {
         height: 100%;
         .cover-img {
-          max-width: getCssVar("home-post-full-img-width");
-          height: getCssVar("home-post-full-img-height");
+          max-width: getCssVar(home-post-full-img-width);
+          height: getCssVar(home-post-full-img-height);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);
-          transition: transform getCssVar("transition-duration") linear;
+          transition: transform getCssVar(transition-duration) linear;
           // 鼠标悬停图片放大，且不要模糊
           &:hover {
             transform: scale(1.1, 1.1);

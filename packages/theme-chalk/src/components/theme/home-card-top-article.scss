@@ -3,13 +3,13 @@
 @use "../../mixins/mixins" as *;
 
 :root {
-  @include set-css-var("home-top-article-gap", getCssVar("gap1"));
+  @include set-css-var(home-top-article-gap, getCssVar(gap1));
 }
 
 @include b(top-article) {
   @include e(list) {
     position: relative;
-    gap: getCssVar("home-top-article-gap");
+    gap: getCssVar(home-top-article-gap);
     padding-right: 5px;
 
     @include e(list__item) {
@@ -17,8 +17,8 @@
       gap: 10px;
 
       .num {
-        color: getCssVar("text-color-secondary");
-        font-size: getCssVar("home-font-size-middle");
+        color: getCssVar(text-color-secondary);
+        font-size: getCssVar(home-font-size-middle);
         margin-top: 4px;
         padding: 0 6px;
         height: 18px;
@@ -28,8 +28,8 @@
         font-style: italic;
 
         &.sticky {
-          font-size: getCssVar("home-font-size-small");
-          background-color: getCssVar("num-bg-color");
+          font-size: getCssVar(home-font-size-small);
+          background-color: getCssVar(num-bg-color);
           color: var(--vp-c-white);
           border-radius: 8px 0;
         }
@@ -40,11 +40,11 @@
         min-width: 0;
 
         .title {
-          font-size: getCssVar("home-font-size-middle");
+          font-size: getCssVar(home-font-size-middle);
           font-weight: 450;
         }
         .date {
-          font-size: getCssVar("home-font-size-small");
+          font-size: getCssVar(home-font-size-small);
           color: var(--vp-c-text-2);
         }
       }
@@ -52,7 +52,7 @@
   }
 
   @include m(empty) {
-    font-size: getCssVar("home-font-size-middle");
+    font-size: getCssVar(home-font-size-middle);
     padding: 6px;
     text-align: center;
   }
