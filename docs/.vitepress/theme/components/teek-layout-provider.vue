@@ -3,21 +3,18 @@ import type { TeekConfig } from "vitepress-theme-teek";
 import Teek, { teekConfigContext, clockIcon, TkMessage } from "vitepress-theme-teek";
 import { useData } from "vitepress";
 import { watch, nextTick, ref, provide } from "vue";
-import { teekDocConfig } from "../config/teek-config";
 import { useRibbon } from "../composables/use-ribbon";
 import { useRuntime } from "../composables/use-runtime";
-import ConfigSwitch from "./config-switch.vue";
 import ContributeChart from "./contribute-chart.vue";
 import NotFound from "./404.vue";
 import CalendarCard from "./calendar-card.vue";
-import ThemeSetting, { type ChangeType } from "./theme-setting.vue";
+import ThemeConfig, { type ChangeType } from "./theme-config.vue";
 
-const ns = "layout-provider";
 const { frontmatter } = useData();
 
 // 默认文档风
 const currentStyle = ref("doc");
-const teekConfig = ref(teekDocConfig);
+const teekConfig = ref<TeekConfig>({});
 provide(teekConfigContext, teekConfig);
 
 // 彩带背景
@@ -47,13 +44,7 @@ watch(frontmatter, newVal => setTimeout(() => watchRuntimeAndRibbon(newVal.layou
   flush: "post",
 });
 
-const handleConfigSwitch = (config: TeekConfig, style: string) => {
-  teekConfig.value = config;
-
-  setTimeout(() => watchRuntimeAndRibbon(frontmatter.value.layout, style), 700);
-};
-
-const handleThemeSettingChange = (config: TeekConfig, type: ChangeType) => {
+const handleThemeConfigChange = (config: TeekConfig, type: ChangeType) => {
   if (type === "bannerWallpaper") {
     teekConfig.value.teekHome = config.teekHome;
     teekConfig.value.vpHome = config.vpHome;
@@ -82,9 +73,7 @@ const handleThemeSettingChange = (config: TeekConfig, type: ChangeType) => {
 <template>
   <Teek.Layout>
     <template #teek-theme-enhance-bottom>
-      <!-- <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" /> -->
-
-      <ThemeSetting @change="handleThemeSettingChange" />
+      <ThemeConfig @change="handleThemeConfigChange" />
     </template>
 
     <template #teek-home-card-my-after>
@@ -92,7 +81,7 @@ const handleThemeSettingChange = (config: TeekConfig, type: ChangeType) => {
     </template>
 
     <template #nav-screen-content-after>
-      <ConfigSwitch v-model="currentStyle" @switch="handleConfigSwitch" />
+      <ThemeConfig @change="handleThemeConfigChange" />
     </template>
 
     <template #teek-archives-top-before>

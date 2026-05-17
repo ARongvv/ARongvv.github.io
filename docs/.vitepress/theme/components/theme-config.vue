@@ -286,8 +286,8 @@ const handleCopy = async () => {
   <div :class="namespace">
     <div class="divider">
       <div class="divider-text is-center">
-        <span>自定义配置</span>
-        <button @click="handleCopy">Copy</button>
+        <span>主题配置</span>
+        <button @click="handleCopy">COPY</button>
       </div>
     </div>
 
@@ -413,6 +413,10 @@ $namespace: theme-setting;
 
   .wrapper {
     margin-bottom: 10px;
+
+    > span {
+      font-size: 14px;
+    }
 
     .tk-segmented {
       margin-top: 8px;
