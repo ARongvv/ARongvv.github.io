@@ -24,6 +24,7 @@ const topArticleConfig = getTeekConfigRef<Required<TopArticle>>("topArticle", {
   autoPage: false,
   pageSpeed: 4000,
   dateFormat: "yyyy-MM-dd hh:mm:ss",
+  dateUTC: true,
 });
 
 const topArticleList = computed(() => {
@@ -41,10 +42,10 @@ const currentTopArticleList = computed(() => {
 });
 
 const formatPostDate = (date?: string) => {
-  const dateFormatConst = topArticleConfig.value.dateFormat;
+  const { dateFormat: dateFormatConst, dateUTC } = topArticleConfig.value;
 
   if (isFunction(dateFormatConst)) return dateFormatConst(date || "");
-  return formatDate(date || new Date(), dateFormatConst);
+  return formatDate(date || new Date(), dateFormatConst, dateUTC);
 };
 
 const finalTitle = computed(() => {
@@ -77,7 +78,7 @@ const handleTitleClick = () => {
     :pageSize="topArticleConfig.limit"
     :total="topArticleList.length"
     :title="finalTitle"
-    :titleClick="topArticleConfig.titleClick ? handleTitleClick : undefined"
+    :titleClick="!!topArticleConfig.titleClick ? handleTitleClick : undefined"
     :autoPage="topArticleConfig.autoPage"
     :pageSpeed="topArticleConfig.pageSpeed"
     :class="ns.b()"

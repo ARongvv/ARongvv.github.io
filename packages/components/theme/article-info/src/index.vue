@@ -38,10 +38,10 @@ const route = useRoute();
 const createDate = computed(() => {
   const originPosts: TkContentData[] = posts.value.originPosts;
   const date = post.date || originPosts.find(item => [item.url, item.frontmatter.permalink].includes(route.path))?.date;
-  const dateFormatConst = articleConfig.value.dateFormat;
+  const { dateFormat: dateFormatConst, dateUTC } = articleConfig.value;
 
   if (isFunction(dateFormatConst)) return dateFormatConst(date || "");
-  return formatDate(date || new Date(), dateFormatConst, articleConfig.value.dateUTC);
+  return formatDate(date || new Date(), dateFormatConst, dateUTC);
 });
 
 // 文章更新时间，取 git 的最后一次提交时间
@@ -49,10 +49,10 @@ const updateDate = computed(() => {
   const date = page.value.lastUpdated;
   if (!date) return "";
 
-  const dateFormatConst = articleConfig.value.dateFormat;
+  const { dateFormat: dateFormatConst, dateUTC } = articleConfig.value;
 
   if (isFunction(dateFormatConst)) return dateFormatConst(date);
-  return formatDate(date, dateFormatConst, !articleConfig.value.dateUTC);
+  return formatDate(date, dateFormatConst, !dateUTC);
 });
 
 const baseInfo = computed(() => {

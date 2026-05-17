@@ -26,6 +26,9 @@ export const teekConfig = defineTeekConfig({
       title: "困",
     },
   },
+  articleAnalyze: {
+    dateFormat: "yyyy-MM-dd hh:mm:ss",
+  },
   banner: {
     name: "🎉 Teek Blog",
     bgStyle: "fullImg",
