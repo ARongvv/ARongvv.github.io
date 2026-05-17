@@ -88,13 +88,23 @@ $progress-thickness: calc($button-size / 10);
       cursor: pointer;
       font-size: 14px;
       padding: 0 10px 0 15px;
+
       &:hover {
         background-color: getCssVar("fill-color-light");
         color: getCssVar("theme-color");
       }
+
       &.active {
         background-color: getCssVar("theme-color");
         color: getCssVar("bg-color");
+      }
+
+      .color-bg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 6px;
       }
     }
   }

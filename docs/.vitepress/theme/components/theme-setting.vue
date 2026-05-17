@@ -28,8 +28,6 @@ const teekConfig = ref<TeekConfig>({});
 
 const { theme } = useData();
 
-console.log(theme.value);
-
 const bannerImgSrc = theme.value.banner?.imgSrc;
 const bodyBgImgSrc = theme.value.bodyBgImg?.imgSrc;
 

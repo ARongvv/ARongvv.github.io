@@ -23,7 +23,7 @@ const isMobile = useMediaQuery(mobileMaxWidthMedia);
 
 const themeColorName = useStorage<string>(
   themeColorStorageKey,
-  themeEnhanceConfig.value.themeColor?.defaultColorName || ThemeColorName.vpDefault
+  themeEnhanceConfig.value.themeColor?.defaultColorName || ThemeColorName.vpPrimary
 );
 const isSpread = useStorage(themeBgColorStorageKey, themeEnhanceConfig.value.themeColor?.defaultSpread || false);
 
@@ -102,8 +102,11 @@ watch(
 watch(isSpread, updateSpread, { immediate: true, flush: "post" });
 
 const tips = computed(() => [
-  { title: t("tk.themeEnhance.themeColor.vpHelpTipTitle"), content: t("tk.themeEnhance.themeColor.vpHelpTipContent") },
-  { title: t("tk.themeEnhance.themeColor.epHelpTipTitle"), content: t("tk.themeEnhance.themeColor.epHelpTipContent") },
+  { title: t("tk.themeEnhance.themeColor.helpTipTitle"), content: t("tk.themeEnhance.themeColor.helpTipContent") },
+  {
+    title: t("tk.themeEnhance.themeColor.customizeHelpTipTitle"),
+    content: t("tk.themeEnhance.themeColor.customizeHelpTipContent"),
+  },
 ]);
 
 const handleChangePrimaryColor = (option: ThemeColorOption) => {
@@ -138,19 +141,17 @@ const getStyle = (color: string | undefined) => {
 
     <template v-for="item in themeColorSelectList" :key="item.label">
       <h3 :title="item.tip" :aria-label="item.label">{{ item.label }}</h3>
-      <ul class="color-list flx-justify-between flx-wrap">
+      <ul class="color-list flx flx-wrap">
         <li
           v-for="option in item.options"
-          :key="item.label + option.value"
-          class="flx-column-center"
+          :key="option.value"
           @click="handleChangePrimaryColor(option)"
-          :title="option.title"
+          :title="option.title ?? option.ariaLabel ?? option.label"
           :aria-label="option.ariaLabel ?? option.title ?? option.label"
         >
           <div class="color-wrapper flx-center" :class="ns.is('active', option.value === themeColorName)">
-            <div class="color-bg" :style="getStyle(option.color)"></div>
+            <div class="color-bg" :style="getStyle(option.color)" />
           </div>
-          <span>{{ option.label }}</span>
         </li>
       </ul>
     </template>

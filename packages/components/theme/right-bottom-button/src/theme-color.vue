@@ -30,7 +30,7 @@ const themeEnhanceConfig = getTeekConfigRef<ThemeEnhance>("themeEnhance", {});
 
 const themeColorName = useStorage<string>(
   themeColorStorageKey,
-  themeEnhanceConfig.value.themeColor?.defaultColorName || ThemeColorName.vpDefault
+  themeEnhanceConfig.value.themeColor?.defaultColorName || ThemeColorName.vpPrimary
 );
 
 const oldThemeColor = ref(themeColorName.value);
@@ -115,7 +115,7 @@ const handleChangePrimaryColor = (option: ThemeColorOption) => {
     :class="ns.e('button')"
     :popper-class="ns.e('dropdown')"
     placement="left-start"
-    :width="120"
+    :width="140"
     :x-offset="15"
     :transition-name="ns.join('fade-scale')"
     :title="t('tk.themeEnhance.themeColor.title')"
@@ -134,13 +134,14 @@ const handleChangePrimaryColor = (option: ThemeColorOption) => {
           <li
             v-for="option in item.options"
             :key="item.label + option.value"
-            :class="['dropdown-item', 'sle', { active: option.value === themeColorName }]"
+            :class="['dropdown-item', 'flx-align-center', 'sle', { active: option.value === themeColorName }]"
             @click="handleChangePrimaryColor(option)"
             role="button"
-            :title="option.title"
+            :title="option.title ?? option.ariaLabel ?? option.label"
             :aria-label="option.ariaLabel ?? option.title ?? option.label"
           >
-            {{ option.label }}
+            <span class="color-bg" :style="{ backgroundColor: option.color }" />
+            <span>{{ option.label }}</span>
           </li>
         </ul>
       </li>

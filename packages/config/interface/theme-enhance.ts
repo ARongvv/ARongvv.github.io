@@ -116,37 +116,26 @@ export interface ThemeEnhance {
      * @default false
      * @since 1.4.1
      */
-    customize?:
-      | boolean
-      | {
-          /**
-           * 是否使用 vitepress 的主题色
-           *
-           * @default true
-           */
-          vitepressTheme?: boolean;
-          /**
-           * 是否使用 elementPlus 的主题色
-           *
-           * @default true
-           */
-          elementPlusTheme?: boolean;
-        };
+    customize?: boolean;
     /**
      * 布局默认主题色
      *
-     * @default ThemeColorName.vpDefault
+     * @default ThemeColorName.vpPrimary
      */
     defaultColorName?:
       | ThemeColorName
-      | "vp-default"
-      | "vp-green"
-      | "vp-yellow"
-      | "vp-red"
-      | "ep-blue"
-      | "ep-green"
-      | "ep-yellow"
-      | "ep-red"
+      | "vp-primary"
+      | "vp-success"
+      | "vp-warning"
+      | "vp-danger"
+      | "tk-primary"
+      | "tk-success"
+      | "tk-warning"
+      | "tk-danger"
+      | "ep-primary"
+      | "ep-success"
+      | "ep-warning"
+      | "ep-danger"
       | string;
     /**
      * 切换布局成功后的回调

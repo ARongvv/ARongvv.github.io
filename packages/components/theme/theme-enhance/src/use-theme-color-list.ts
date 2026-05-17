@@ -1,7 +1,7 @@
 import type { ThemeEnhance } from "@teek/config";
 import { computed } from "vue";
 import { useLocale } from "@teek/composables";
-import { isBoolean, isClient } from "@teek/helper";
+import { isClient } from "@teek/helper";
 import { useTeekConfig } from "@teek/components/theme/config-provider";
 import { ThemeColorName, ThemeColorOption } from "./theme-enhance";
 
@@ -19,80 +19,96 @@ export const useThemeColorList = () => {
   return computed(() => {
     const { customize = false, append = [] } = themeEnhanceConfig.value.themeColor || {};
 
-    const useVitepressTheme = isBoolean(customize) ? customize === false : (customize?.vitepressTheme ?? true);
-    const useElementPlusTheme = isBoolean(customize) ? customize === false : (customize?.elementPlusTheme ?? true);
-
-    const vitePressThemeColorList = useVitepressTheme
+    const nativeThemeColorList = !customize
       ? [
           {
-            label: t("tk.themeEnhance.themeColor.vpLabel"),
-            tip: t("tk.themeEnhance.themeColor.vpTip"),
+            label: t("tk.themeEnhance.themeColor.label"),
+            tip: t("tk.themeEnhance.themeColor.tip"),
             options: [
               {
-                value: ThemeColorName.vpDefault,
-                label: t("tk.themeEnhance.themeColor.defaultLabel"),
-                title: `VitePress ${t("tk.themeEnhance.themeColor.defaultLabel")}`,
-                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.defaultLabel")}`,
+                value: ThemeColorName.vpPrimary,
+                label: `VP ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                title: `VitePress ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--vp-c-indigo-1"),
               },
               {
-                value: ThemeColorName.vpGreen,
-                label: t("tk.themeEnhance.themeColor.greenLabel"),
-                title: `VitePress ${t("tk.themeEnhance.themeColor.greenLabel")}`,
-                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.greenLabel")}`,
+                value: ThemeColorName.vpSuccess,
+                label: `VP ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                title: `VitePress ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.successLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--vp-c-green-1"),
               },
               {
-                value: ThemeColorName.vpYellow,
-                label: t("tk.themeEnhance.themeColor.yellowLabel"),
-                title: `VitePress ${t("tk.themeEnhance.themeColor.yellowLabel")}`,
-                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.yellowLabel")}`,
+                value: ThemeColorName.vpWarning,
+                label: `VP ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                title: `VitePress ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.warningLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--vp-c-yellow-1"),
               },
               {
-                value: ThemeColorName.vpRed,
-                label: t("tk.themeEnhance.themeColor.redLabel"),
-                title: `VitePress ${t("tk.themeEnhance.themeColor.redLabel")}`,
-                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.redLabel")}`,
+                value: ThemeColorName.vpDanger,
+                label: `VP ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                title: `VitePress ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                ariaLabel: `VitePress ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--vp-c-red-1"),
               },
-            ],
-          },
-        ]
-      : [];
-
-    const elementPlusThemeColorList = useElementPlusTheme
-      ? [
-          {
-            label: t("tk.themeEnhance.themeColor.epLabel"),
-            tip: t("tk.themeEnhance.themeColor.epTip"),
-            options: [
+              // Teek Color
               {
-                value: ThemeColorName.epBlue,
-                label: `${t("tk.themeEnhance.themeColor.blueLabel")}`,
-                title: `ElementPlus ${t("tk.themeEnhance.themeColor.blueLabel")}`,
-                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.blueLabel")}`,
+                value: ThemeColorName.tkPrimary,
+                label: `TK ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                title: `Teek ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                ariaLabel: `Teek ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                color: getComputedStyle(document.documentElement).getPropertyValue("--tk-color-primary"),
+              },
+              {
+                value: ThemeColorName.tkSuccess,
+                label: `TK ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                title: `Teek ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                ariaLabel: `Teek ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                color: getComputedStyle(document.documentElement).getPropertyValue("--tk-color-success"),
+              },
+              {
+                value: ThemeColorName.tkWarning,
+                label: `TK ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                title: `Teek ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                ariaLabel: `Teek ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                color: getComputedStyle(document.documentElement).getPropertyValue("--tk-color-warning"),
+              },
+              {
+                value: ThemeColorName.tkDanger,
+                label: `TK ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                title: `Teek ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                ariaLabel: `Teek ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                color: getComputedStyle(document.documentElement).getPropertyValue("--tk-color-danger"),
+              },
+              // Element Plus Color
+              {
+                value: ThemeColorName.epPrimary,
+                label: `EP ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                title: `ElementPlus ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
+                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.primaryLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--tk-el-color-primary"),
               },
               {
-                value: ThemeColorName.epGreen,
-                label: `${t("tk.themeEnhance.themeColor.greenLabel")}`,
-                title: `ElementPlus ${t("tk.themeEnhance.themeColor.greenLabel")}`,
-                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.greenLabel")}`,
+                value: ThemeColorName.epSuccess,
+                label: `EP ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                title: `ElementPlus ${t("tk.themeEnhance.themeColor.successLabel")}`,
+                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.successLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--tk-el-color-success"),
               },
               {
-                value: ThemeColorName.epYellow,
-                label: `${t("tk.themeEnhance.themeColor.yellowLabel")}`,
-                title: `ElementPlus ${t("tk.themeEnhance.themeColor.yellowLabel")}`,
-                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.yellowLabel")}`,
+                value: ThemeColorName.epWarning,
+                label: `EP ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                title: `ElementPlus ${t("tk.themeEnhance.themeColor.warningLabel")}`,
+                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.warningLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--tk-el-color-warning"),
               },
               {
-                value: ThemeColorName.epRed,
-                label: `${t("tk.themeEnhance.themeColor.redLabel")}`,
-                title: `ElementPlus ${t("tk.themeEnhance.themeColor.redLabel")}`,
-                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.redLabel")}`,
+                value: ThemeColorName.epDanger,
+                label: `EP ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                title: `ElementPlus ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
+                ariaLabel: `ElementPlus ${t("tk.themeEnhance.themeColor.dangerLabel")}`,
                 color: getComputedStyle(document.documentElement).getPropertyValue("--tk-el-color-danger"),
               },
             ],
@@ -100,7 +116,7 @@ export const useThemeColorList = () => {
         ]
       : [];
 
-    return [...vitePressThemeColorList, ...elementPlusThemeColorList, ...append] as {
+    return [...nativeThemeColorList, ...append] as {
       label: string;
       tip: string;
       options: ThemeColorOption[];

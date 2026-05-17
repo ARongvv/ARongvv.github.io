@@ -13,19 +13,23 @@ export enum SpotlightStyle {
 }
 
 export enum ThemeColorName {
-  vpDefault = "vp-default",
-  vpGreen = "vp-green",
-  vpYellow = "vp-yellow",
-  vpRed = "vp-red",
-  epBlue = "ep-blue",
-  epGreen = "ep-green",
-  epYellow = "ep-yellow",
-  epRed = "ep-red",
+  vpPrimary = "vp-primary",
+  vpSuccess = "vp-success",
+  vpWarning = "vp-warning",
+  vpDanger = "vp-danger",
+  tkPrimary = "tk-primary",
+  tkSuccess = "tk-success",
+  tkWarning = "tk-warning",
+  tkDanger = "tk-danger",
+  epPrimary = "ep-primary",
+  epSuccess = "ep-success",
+  epWarning = "ep-warning",
+  epDanger = "ep-danger",
 }
 
 export interface ThemeColorOption {
   value: string;
-  label: string;
+  label?: string;
   color?: string;
   title?: string;
   ariaLabel?: string;
@@ -33,14 +37,18 @@ export interface ThemeColorOption {
 
 // Teek 内置的主题色
 export const themeColorList = [
-  ThemeColorName.vpDefault,
-  ThemeColorName.vpGreen,
-  ThemeColorName.vpYellow,
-  ThemeColorName.vpRed,
-  ThemeColorName.epBlue,
-  ThemeColorName.epGreen,
-  ThemeColorName.epYellow,
-  ThemeColorName.epRed,
+  ThemeColorName.vpPrimary,
+  ThemeColorName.vpSuccess,
+  ThemeColorName.vpWarning,
+  ThemeColorName.vpDanger,
+  ThemeColorName.tkPrimary,
+  ThemeColorName.tkSuccess,
+  ThemeColorName.tkWarning,
+  ThemeColorName.tkDanger,
+  ThemeColorName.epPrimary,
+  ThemeColorName.epSuccess,
+  ThemeColorName.epWarning,
+  ThemeColorName.epDanger,
 ] as string[];
 
 export const mobileMaxWidthMedia = "(max-width: 768px)";
