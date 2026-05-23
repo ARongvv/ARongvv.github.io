@@ -112,6 +112,7 @@ const handleChangePrimaryColor = (option: ThemeColorOption) => {
 
 <template>
   <TkPopover
+    v-if="!(themeEnhanceConfig.themeColor?.hidden ?? themeEnhanceConfig.hidden ?? false)"
     :class="ns.e('button')"
     :popper-class="ns.e('dropdown')"
     placement="left-start"

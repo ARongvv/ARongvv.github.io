@@ -33,7 +33,7 @@ const disabledList = computed(() => {
 
 <template>
   <TkPopover
-    v-if="!isMobile && themeEnhanceConfig.position === 'top'"
+    v-if="!isMobile && themeEnhanceConfig.position === 'top' && !(themeEnhanceConfig.hidden ?? false)"
     :class="[ns.b(), 'flx-align-center']"
     :popper-class="ns.e('popover')"
     :y-offset="-15"
@@ -62,4 +62,29 @@ const disabledList = computed(() => {
       <slot name="teek-theme-enhance-bottom" />
     </div>
   </TkPopover>
+
+  <div
+    v-if="themeEnhanceConfig.hidden ?? false"
+    v-show="!(themeEnhanceConfig.hidden ?? false)"
+    :class="ns.e('content')"
+  >
+    <slot name="teek-theme-enhance-top" />
+
+    <template v-if="!disabledList.layoutSwitch">
+      <LayoutSwitch />
+      <LayoutPageWidthSlide />
+      <LayoutDocWidthSlide />
+    </template>
+
+    <template v-if="!disabledList.themeColor">
+      <ThemeColor />
+    </template>
+
+    <template v-if="!disabledList.spotlight">
+      <Spotlight />
+      <SpotlightStyle />
+    </template>
+
+    <slot name="teek-theme-enhance-bottom" />
+  </div>
 </template>
