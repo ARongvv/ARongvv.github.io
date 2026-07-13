@@ -102,6 +102,7 @@ export const teekConfig = defineTeekConfig({
     },
   ],
   themeEnhance: {
+    enabled: false,
     themeColor: {
       append: [
         {

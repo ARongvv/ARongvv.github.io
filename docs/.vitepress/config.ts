@@ -89,7 +89,7 @@ export default defineConfig({
       { text: "首页", link: "/" },
       { text: "cAGENT", link: "/cagent/intro", activeMatch: "/01.cAGENT/" },
       { text: "嵌入式", link: "/embedded/intro", activeMatch: "/05.嵌入式/" },
-      { text: "freertos", link: "/freertos/intro", activeMatch: "/10.freertos/" },
+      { text: "FreeRTOS", link: "/freertos/intro", activeMatch: "/10.FreeRTOS/" },
       {
         text: "功能页",
         items: [
