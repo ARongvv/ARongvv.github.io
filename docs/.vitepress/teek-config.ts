@@ -50,6 +50,7 @@ export const teekConfig = defineTeekConfig({
     createTime: "2025-03-23",
     statistics: {
       provider: "busuanzi",
+      pageView: false,
     },
   },
   codeBlock: {
