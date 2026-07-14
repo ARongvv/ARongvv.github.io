@@ -8,7 +8,7 @@ import { defineTeekConfig } from "../../packages/config";
 export const teekConfig = defineTeekConfig({
   teekHome: true,
   vpHome: false,
-  loading: true,
+  loading: false,
   sidebarTrigger: true,
   author: { name: "ARongw", link: "https://github.com/ARongvv" },
   blogger: {
