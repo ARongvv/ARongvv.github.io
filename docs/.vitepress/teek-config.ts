@@ -6,9 +6,9 @@ import { defineTeekConfig } from "../../packages/config";
 // import { version } from "vitepress-theme-teek/es/version";
 
 export const teekConfig = defineTeekConfig({
-  teekHome: false,
-  vpHome: true,
-  loading: false,
+  teekHome: true,
+  vpHome: false,
+  loading: true,
   sidebarTrigger: true,
   author: { name: "ARongw", link: "https://github.com/ARongvv" },
   blogger: {
@@ -102,8 +102,12 @@ export const teekConfig = defineTeekConfig({
     },
   ],
   themeEnhance: {
-    enabled: false,
+    enabled: true,
+    layoutSwitch: {
+      defaultMode: "original",
+    },
     themeColor: {
+      defaultColorName: "haze-blue",
       append: [
         {
           label: "扩展主题色板",
