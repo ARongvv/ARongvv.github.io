@@ -20,7 +20,7 @@ const tracks = [
 
 const posts = usePosts();
 
-const latestPosts = computed(() => posts.value.sortPostsByDate.slice(0, 6));
+const latestPosts = computed(() => posts.value.sortPostsByDate.slice(0, 12));
 const coverClasses = ["sage", "blue", "lilac", "teal", "amber", "slate"];
 
 const formatDate = (date?: string) => {
