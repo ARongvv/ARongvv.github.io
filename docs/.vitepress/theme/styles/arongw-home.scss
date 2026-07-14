@@ -176,14 +176,7 @@
   font-size: clamp(44px, 5.1vw, 76px);
   font-weight: 700;
   line-height: 1.06;
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.arongw-home__nav-item:hover {
-  color: var(--arongw-primary-active);
-  transform: translateX(4px);
+  transition: color 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .arongw-home__nav-arrow {
@@ -197,12 +190,25 @@
   font-size: 0.84em;
   font-weight: 400;
   line-height: 1;
-  transition: transform 0.2s ease;
+  transition:
+    color 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.arongw-home__nav-item:hover .arongw-home__nav-arrow {
-  color: var(--arongw-primary-active);
-  transform: translateX(4px);
+@media (hover: hover) and (pointer: fine) {
+  .arongw-home__nav:has(.arongw-home__nav-item:hover) .arongw-home__nav-item:not(:hover):not(:focus-visible) {
+    color: var(--arongw-muted-soft);
+  }
+
+  .arongw-home__nav:has(.arongw-home__nav-item:hover)
+    .arongw-home__nav-item:not(:hover):not(:focus-visible)
+    .arongw-home__nav-arrow {
+    color: var(--arongw-muted-soft);
+  }
+
+  .arongw-home__nav-item:hover .arongw-home__nav-arrow {
+    transform: translateX(8px);
+  }
 }
 
 .arongw-home__latest {
