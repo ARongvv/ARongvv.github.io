@@ -106,7 +106,7 @@ export const teekConfig = defineTeekConfig({
     },
   ],
   themeEnhance: {
-    enabled: true,
+    enabled: false,
     layoutSwitch: {
       defaultMode: "original",
     },

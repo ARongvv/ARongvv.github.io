@@ -1,4 +1,4 @@
-:root {
+.VPContent.is-home {
   --arongw-primary: #6699cc;
   --arongw-primary-hover: #4f86bd;
   --arongw-primary-active: #3d6fa3;
@@ -14,10 +14,9 @@
   --arongw-hairline: #dde6ee;
   --arongw-hairline-soft: #e8eef3;
   --arongw-cover-line: rgba(20, 20, 19, 0.86);
-  color-scheme: light;
 }
 
-:root.dark {
+:root.dark .VPContent.is-home {
   --arongw-primary: #7db0e0;
   --arongw-primary-hover: #93bee6;
   --arongw-primary-active: #9fc7ea;
@@ -33,11 +32,6 @@
   --arongw-hairline: #2b3744;
   --arongw-hairline-soft: #25313d;
   --arongw-cover-line: rgba(243, 246, 248, 0.78);
-  color-scheme: dark;
-}
-
-body {
-  background: var(--arongw-page-bg);
 }
 
 .VPContent.is-home,
@@ -48,7 +42,6 @@ body {
   background: var(--arongw-page-bg);
 }
 
-.VPFooter,
 .tk-layout .VPNavBar.home,
 .tk-layout .VPNavBar.home .content-body,
 .tk-layout .VPNavBar.home .divider {
