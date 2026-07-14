@@ -10,24 +10,26 @@ const description = [
   "这里记录技术学习、项目实践与日常思考。",
   "用文字整理经验，用代码验证想法。",
 ].toString();
+const base = "/";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   extends: teekConfig,
+  base,
   title: "ARongw 的博客",
   description: description,
   cleanUrls: false,
   lastUpdated: true,
   lang: "zh-CN",
   head: [
-    ["link", { rel: "icon", type: "image/svg+xml", href: "/teek-logo-mini.svg" }],
-    ["link", { rel: "icon", type: "image/png", href: "/teek-logo-mini.png" }],
+    ["link", { rel: "icon", type: "image/svg+xml", href: `${base}teek-logo-mini.svg` }],
+    ["link", { rel: "icon", type: "image/png", href: `${base}teek-logo-mini.png` }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:locale", content: "zh-CN" }],
     ["meta", { property: "og:title", content: "ARongw 的博客" }],
     ["meta", { property: "og:site_name", content: "ARongw 的博客" }],
     ["meta", { property: "og:image", content: "https://github.com/ARongvv.png" }],
-    ["meta", { property: "og:url", content: "https://github.com/ARongvv" }],
+    ["meta", { property: "og:url", content: "https://ARongvv.github.io" }],
     ["meta", { property: "og:description", description }],
     ["meta", { name: "description", description }],
     ["meta", { name: "author", content: "ARongw" }],
@@ -58,7 +60,7 @@ export default defineConfig({
     },
   },
   sitemap: {
-    hostname: "https://github.com/ARongvv",
+    hostname: "https://ARongvv.github.io",
     transformItems: items => {
       const permalinkItemBak: typeof items = [];
       // 使用永久链接生成 sitemap
