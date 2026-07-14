@@ -2,15 +2,17 @@
 import type { TeekConfig } from "vitepress-theme-teek";
 import Teek, { teekConfigContext, clockIcon, TkMessage } from "vitepress-theme-teek";
 import { useData } from "vitepress";
-import { watch, nextTick, ref, provide } from "vue";
+import { watch, nextTick, ref, provide, computed } from "vue";
 import { useRibbon } from "../composables/use-ribbon";
 import { useRuntime } from "../composables/use-runtime";
+import ArongwHome from "./arongw-home.vue";
 import ContributeChart from "./contribute-chart.vue";
 import NotFound from "./404.vue";
 import CalendarCard from "./calendar-card.vue";
 import ThemeConfig, { type ChangeType } from "./theme-config.vue";
 
 const { frontmatter } = useData();
+const isArongwHome = computed(() => frontmatter.value.layout === "home" && frontmatter.value.tk?.arongwHome);
 
 // 默认文档风
 const currentStyle = ref("doc");
@@ -74,6 +76,10 @@ const handleThemeConfigChange = (config: TeekConfig, type: ChangeType) => {
 
 <template>
   <Teek.Layout>
+    <template #home-hero-before>
+      <ArongwHome v-if="isArongwHome" />
+    </template>
+
     <template #teek-theme-enhance-bottom>
       <ThemeConfig @change="handleThemeConfigChange" />
     </template>

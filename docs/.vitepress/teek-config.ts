@@ -43,6 +43,9 @@ export const teekConfig = defineTeekConfig({
     enabled: true,
     hideBanner: true,
   },
+  topArticle: {
+    enabled: false,
+  },
   docAnalysis: {
     createTime: "2025-03-23",
     statistics: {
