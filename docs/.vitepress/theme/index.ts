@@ -7,7 +7,6 @@ import "@teek/theme-chalk/vp-plus/code-block-mobile.scss"; // 移动端代码块
 import "@teek/theme-chalk/vp-plus/sidebar.scss"; // 侧边栏优化
 import "@teek/theme-chalk/vp-plus/nav.scss"; // 导航栏优化
 import "@teek/theme-chalk/vp-plus/aside.scss"; // 右侧目栏录文字悬停和激活样式
-import "@teek/theme-chalk/vp-plus/doc-h1-gradient.scss"; // 一级标题渐变色
 import "@teek/theme-chalk/vp-plus/table.scss"; // 表格样式调整，去掉单元格之间的线条
 import "@teek/theme-chalk/vp-plus/mark.scss"; // <mark></mark> 样式
 import "@teek/theme-chalk/vp-plus/blockquote.scss"; // > 引用块样式
