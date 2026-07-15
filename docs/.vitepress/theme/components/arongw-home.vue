@@ -4,7 +4,21 @@ import { withBase } from "vitepress";
 import { usePosts } from "vitepress-theme-teek";
 import ArongwPostCover from "./arongw-post-cover.vue";
 
-type CoverTemplate = "network" | "timeline" | "chip" | "path" | "scan" | "converge";
+type CoverTemplate =
+  | "network"
+  | "timeline"
+  | "chip"
+  | "path"
+  | "scan"
+  | "converge"
+  | "orbit"
+  | "bridge"
+  | "split"
+  | "ribbon"
+  | "honeycomb"
+  | "waveform"
+  | "nested"
+  | "balance";
 type CoverTone = "coral" | "sage" | "blue" | "lilac" | "teal" | "amber";
 
 interface CoverConfig {
@@ -36,16 +50,31 @@ const tracks = [
 const posts = usePosts();
 
 const latestPosts = computed(() => posts.value.sortPostsByDate.slice(0, 12));
-const coverTemplates: CoverTemplate[] = ["network", "timeline", "chip", "path", "scan", "converge"];
+const coverTemplates: CoverTemplate[] = [
+  "network",
+  "timeline",
+  "chip",
+  "path",
+  "scan",
+  "converge",
+  "orbit",
+  "bridge",
+  "split",
+  "ribbon",
+  "honeycomb",
+  "waveform",
+  "nested",
+  "balance",
+];
 const coverTones: CoverTone[] = ["coral", "sage", "blue", "lilac", "teal", "amber"];
 
 const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
-  cagent: { templates: ["network", "path", "converge"], tones: ["coral", "lilac", "teal"] },
-  freertos: { templates: ["timeline", "path", "converge"], tones: ["sage", "blue", "lilac"] },
-  嵌入式: { templates: ["chip", "scan", "path"], tones: ["blue", "amber", "sage"] },
-  linux: { templates: ["path", "timeline", "chip"], tones: ["lilac", "blue", "sage"] },
-  边缘ai: { templates: ["scan", "network", "converge"], tones: ["teal", "blue", "coral"] },
-  项目实践: { templates: ["converge", "path", "timeline"], tones: ["amber", "sage", "coral"] },
+  cagent: { templates: ["network", "orbit", "honeycomb", "converge"], tones: ["coral", "lilac", "teal"] },
+  freertos: { templates: ["timeline", "orbit", "waveform", "balance"], tones: ["sage", "blue", "lilac"] },
+  嵌入式: { templates: ["chip", "waveform", "nested", "scan"], tones: ["blue", "amber", "sage"] },
+  linux: { templates: ["nested", "split", "ribbon", "path"], tones: ["lilac", "blue", "sage"] },
+  边缘ai: { templates: ["scan", "waveform", "orbit", "network"], tones: ["teal", "blue", "coral"] },
+  项目实践: { templates: ["converge", "bridge", "balance", "ribbon"], tones: ["amber", "sage", "coral"] },
 };
 
 const formatDate = (date?: string) => {

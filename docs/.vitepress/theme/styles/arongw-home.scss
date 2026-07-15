@@ -394,7 +394,15 @@
 .cover-chip,
 .cover-path,
 .cover-scan,
-.cover-converge {
+.cover-converge,
+.cover-orbit,
+.cover-bridge,
+.cover-split,
+.cover-ribbon,
+.cover-honeycomb,
+.cover-waveform,
+.cover-nested,
+.cover-balance {
   position: absolute;
   inset: 12%;
   display: block;
@@ -853,6 +861,518 @@
   bottom: 9%;
 }
 
+/* Offset orbital rings around a fixed core */
+.orbit-ring {
+  left: 50%;
+  top: 50%;
+  border: 2px solid var(--cover-line);
+  border-left-color: transparent;
+  border-radius: 50%;
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.orbit-ring.ring-1 {
+  width: 72%;
+  height: 43%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+}
+
+.orbit-ring.ring-2 {
+  width: 48%;
+  height: 72%;
+  border-right-color: transparent;
+  border-left-color: var(--cover-line);
+  transform: translate(-50%, -50%) rotate(22deg);
+}
+
+.orbit-core {
+  z-index: 3;
+  left: 42%;
+  top: 34%;
+  width: 18%;
+  aspect-ratio: 1;
+  padding: 2px;
+  background: var(--cover-line);
+  clip-path: polygon(50% 0, 94% 27%, 86% 79%, 42% 100%, 4% 68%, 13% 18%);
+}
+
+.orbit-core b {
+  inset: 2px;
+  background: var(--cover-light);
+  clip-path: inherit;
+}
+
+.orbit-node {
+  z-index: 4;
+  width: 7%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+}
+
+.orbit-node.node-1 {
+  left: 13%;
+  top: 38%;
+}
+.orbit-node.node-2 {
+  right: 14%;
+  top: 28%;
+}
+.orbit-node.node-3 {
+  right: 26%;
+  bottom: 12%;
+}
+.orbit-node.node-4 {
+  left: 35%;
+  top: 8%;
+  background: var(--cover-deep);
+}
+
+/* Abstract bridge between two systems */
+.bridge-deck {
+  left: 10%;
+  top: 30%;
+  width: 80%;
+  height: 2px;
+  background: var(--cover-line);
+  transform: rotate(-1deg);
+}
+
+.bridge-arm {
+  top: 31%;
+  width: 35%;
+  height: 2px;
+  background: var(--cover-line);
+  transform-origin: top left;
+}
+
+.bridge-arm.arm-1 {
+  left: 18%;
+  transform: rotate(25deg);
+}
+.bridge-arm.arm-2 {
+  right: 14%;
+  transform: rotate(155deg);
+  transform-origin: top right;
+}
+
+.bridge-support {
+  top: 31%;
+  width: 2px;
+  height: 37%;
+  background: var(--cover-line);
+  transform-origin: top center;
+}
+
+.bridge-support.support-1 {
+  left: 31%;
+  transform: rotate(-16deg);
+}
+.bridge-support.support-2 {
+  right: 31%;
+  transform: rotate(16deg);
+}
+
+.bridge-core {
+  z-index: 3;
+  left: 44%;
+  bottom: 12%;
+  width: 14%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  background: var(--cover-light);
+  transform: rotate(45deg);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bridge-node {
+  z-index: 3;
+  top: 24%;
+  width: 9%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+}
+
+.bridge-node.node-1 {
+  left: 6%;
+}
+.bridge-node.node-2 {
+  right: 6%;
+  background: var(--cover-deep);
+}
+
+/* Split modules with a deliberate central gap */
+.split-module {
+  top: 20%;
+  width: 35%;
+  height: 55%;
+  border: 2px solid var(--cover-line);
+  border-radius: 9px;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.split-module.module-1 {
+  left: 8%;
+  background: var(--cover-light);
+  transform: rotate(-2deg);
+}
+.split-module.module-2 {
+  right: 7%;
+  background: transparent;
+  transform: rotate(2deg);
+}
+
+.split-module b {
+  left: 35%;
+  top: 32%;
+  width: 30%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  background: var(--cover-mid);
+  transform: rotate(45deg);
+}
+
+.split-module.module-2 b {
+  border-radius: 50%;
+  background: var(--cover-deep);
+  transform: none;
+}
+
+.split-connector {
+  z-index: 3;
+  left: 40%;
+  top: 48%;
+  width: 20%;
+  height: 2px;
+  background: var(--cover-line);
+}
+
+.split-node {
+  z-index: 4;
+  top: 44%;
+  width: 7%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+}
+
+.split-node.node-1 {
+  left: 38%;
+}
+.split-node.node-2 {
+  right: 38%;
+}
+
+/* Folded ribbon following a stepped route */
+.ribbon-segment {
+  height: 17%;
+  border: 2px solid var(--cover-line);
+  background: var(--cover-light);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ribbon-segment.segment-1 {
+  left: 7%;
+  top: 20%;
+  width: 38%;
+  transform: rotate(-2deg);
+}
+.ribbon-segment.segment-2 {
+  left: 38%;
+  top: 31%;
+  width: 27%;
+  background: var(--cover-mid);
+  transform: rotate(25deg);
+}
+.ribbon-segment.segment-3 {
+  left: 55%;
+  top: 48%;
+  width: 33%;
+  background: var(--cover-deep);
+  transform: rotate(-4deg);
+}
+.ribbon-segment.segment-4 {
+  right: 5%;
+  top: 61%;
+  width: 24%;
+  transform: rotate(26deg);
+}
+
+.ribbon-fold {
+  z-index: 3;
+  width: 8%;
+  height: 17%;
+  background: var(--cover-line);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.ribbon-fold.fold-1 {
+  left: 40%;
+  top: 26%;
+  transform: rotate(8deg);
+}
+.ribbon-fold.fold-2 {
+  right: 25%;
+  top: 52%;
+  transform: rotate(12deg);
+}
+
+.ribbon-node {
+  z-index: 4;
+  right: 2%;
+  bottom: 7%;
+  width: 9%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Sparse honeycomb with one displaced cell */
+.honeycomb-cell {
+  width: 20%;
+  aspect-ratio: 1;
+  padding: 2px;
+  background: var(--cover-line);
+  clip-path: polygon(25% 6%, 75% 6%, 100% 50%, 75% 94%, 25% 94%, 0 50%);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.honeycomb-cell b {
+  inset: 2px;
+  background: var(--cover-light);
+  clip-path: inherit;
+}
+
+.honeycomb-cell.cell-1 {
+  left: 21%;
+  top: 9%;
+}
+.honeycomb-cell.cell-2 {
+  left: 41%;
+  top: 9%;
+}
+.honeycomb-cell.cell-3 {
+  left: 11%;
+  top: 39%;
+}
+.honeycomb-cell.cell-4 {
+  left: 31%;
+  top: 39%;
+}
+.honeycomb-cell.cell-5 {
+  left: 51%;
+  top: 39%;
+}
+.honeycomb-cell.cell-6 {
+  right: 7%;
+  bottom: 4%;
+  transform: rotate(5deg);
+}
+.honeycomb-cell.cell-2 b,
+.honeycomb-cell.cell-5 b {
+  background: var(--cover-mid);
+}
+
+.honeycomb-core {
+  z-index: 3;
+  left: 37%;
+  top: 46%;
+  width: 9%;
+  aspect-ratio: 1;
+  background: var(--cover-deep);
+  transform: rotate(45deg);
+}
+
+/* Abstract waveform with sampling nodes */
+.wave-segment {
+  top: 50%;
+  width: 18%;
+  height: 2px;
+  background: var(--cover-line);
+  transform-origin: left center;
+}
+
+.wave-segment.segment-1 {
+  left: 3%;
+  transform: rotate(-1deg);
+}
+.wave-segment.segment-2 {
+  left: 20%;
+  transform: rotate(-43deg);
+}
+.wave-segment.segment-3 {
+  left: 32%;
+  top: 37%;
+  transform: rotate(46deg);
+}
+.wave-segment.segment-4 {
+  left: 45%;
+  top: 50%;
+  transform: rotate(1deg);
+}
+.wave-segment.segment-5 {
+  left: 62%;
+  transform: rotate(-39deg);
+}
+.wave-segment.segment-6 {
+  left: 75%;
+  top: 38%;
+  transform: rotate(40deg);
+}
+
+.wave-node {
+  z-index: 3;
+  width: 8%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wave-node.node-1 {
+  left: 27%;
+  top: 19%;
+}
+.wave-node.node-2 {
+  left: 46%;
+  top: 45%;
+}
+.wave-node.node-3 {
+  right: 13%;
+  top: 21%;
+  background: var(--cover-deep);
+}
+
+.wave-window {
+  z-index: 2;
+  left: 39%;
+  top: 25%;
+  width: 28%;
+  height: 48%;
+  border: 2px solid var(--cover-line);
+  border-radius: 8px;
+  background: rgba(243, 238, 228, 0.18);
+  transform: rotate(-2deg);
+}
+
+/* Nested, slightly misaligned system layers */
+.nested-frame {
+  left: 50%;
+  top: 50%;
+  border: 2px solid var(--cover-line);
+  border-radius: 9px;
+  transform: translate(-50%, -50%);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nested-frame.frame-1 {
+  width: 78%;
+  height: 76%;
+  background: rgba(243, 238, 228, 0.08);
+  transform: translate(-50%, -50%) rotate(-2deg);
+}
+.nested-frame.frame-2 {
+  width: 59%;
+  height: 57%;
+  background: var(--cover-mid);
+  transform: translate(-48%, -49%) rotate(3deg);
+}
+.nested-frame.frame-3 {
+  width: 40%;
+  height: 38%;
+  background: var(--cover-light);
+  transform: translate(-52%, -48%) rotate(-3deg);
+}
+.nested-frame.frame-4 {
+  width: 23%;
+  height: 21%;
+  background: var(--cover-deep);
+  transform: translate(-46%, -52%) rotate(4deg);
+}
+
+.nested-core {
+  z-index: 4;
+  left: 47%;
+  top: 43%;
+  width: 8%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  background: var(--cover-light);
+  transform: rotate(45deg);
+}
+
+/* Deliberately imperfect balance between unlike modules */
+.balance-beam {
+  left: 11%;
+  top: 43%;
+  width: 78%;
+  height: 2px;
+  background: var(--cover-line);
+  transform: rotate(-4deg);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.balance-stem {
+  left: 50%;
+  top: 44%;
+  width: 2px;
+  height: 35%;
+  background: var(--cover-line);
+}
+
+.balance-core {
+  z-index: 3;
+  left: 45%;
+  top: 36%;
+  width: 11%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  background: var(--cover-light);
+  transform: rotate(45deg);
+}
+
+.balance-module {
+  z-index: 3;
+  left: 8%;
+  top: 29%;
+  width: 22%;
+  height: 25%;
+  border: 2px solid var(--cover-line);
+  border-radius: 7px;
+  background: var(--cover-mid);
+}
+
+.balance-node {
+  z-index: 3;
+  width: 8%;
+  aspect-ratio: 1;
+  border: 2px solid var(--cover-line);
+  border-radius: 50%;
+  background: var(--cover-light);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.balance-node.node-1 {
+  right: 8%;
+  top: 22%;
+}
+.balance-node.node-2 {
+  right: 20%;
+  top: 34%;
+  background: var(--cover-deep);
+}
+.balance-node.node-3 {
+  left: 47%;
+  bottom: 9%;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .arongw-post-card:hover .network-core b {
     transform: rotate(8deg);
@@ -898,6 +1418,44 @@
   .arongw-post-card:hover .converge-block.block-5,
   .arongw-post-card:hover .converge-block.block-6 {
     transform: translate(-4px, 0);
+  }
+
+  .arongw-post-card:hover .orbit-ring.ring-1 {
+    transform: translate(-50%, -50%) rotate(-9deg);
+  }
+  .arongw-post-card:hover .orbit-ring.ring-2 {
+    transform: translate(-50%, -50%) rotate(25deg);
+  }
+  .arongw-post-card:hover .bridge-core {
+    transform: translateY(4px) rotate(45deg);
+  }
+  .arongw-post-card:hover .split-module.module-1 {
+    transform: translateX(-4px) rotate(-2deg);
+  }
+  .arongw-post-card:hover .split-module.module-2 {
+    transform: translateX(4px) rotate(2deg);
+  }
+  .arongw-post-card:hover .ribbon-node {
+    transform: translate(5px, 3px);
+  }
+  .arongw-post-card:hover .honeycomb-cell.cell-6 {
+    transform: translate(5px, -4px) rotate(5deg);
+  }
+  .arongw-post-card:hover .wave-node.node-1,
+  .arongw-post-card:hover .wave-node.node-3 {
+    transform: translateY(-4px);
+  }
+  .arongw-post-card:hover .nested-frame.frame-1 {
+    transform: translate(-50%, -50%) rotate(-3deg) scale(1.02);
+  }
+  .arongw-post-card:hover .nested-frame.frame-3 {
+    transform: translate(-52%, -48%) rotate(-2deg) scale(0.98);
+  }
+  .arongw-post-card:hover .balance-beam {
+    transform: rotate(-2deg);
+  }
+  .arongw-post-card:hover .balance-node.node-1 {
+    transform: translateY(-3px);
   }
 }
 
