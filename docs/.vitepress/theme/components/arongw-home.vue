@@ -18,7 +18,11 @@ type CoverTemplate =
   | "honeycomb"
   | "waveform"
   | "nested"
-  | "balance";
+  | "balance"
+  | "spiral"
+  | "flow"
+  | "branch"
+  | "contour";
 type CoverTone = "coral" | "sage" | "blue" | "lilac" | "teal" | "amber";
 
 interface CoverConfig {
@@ -65,16 +69,38 @@ const coverTemplates: CoverTemplate[] = [
   "waveform",
   "nested",
   "balance",
+  "spiral",
+  "flow",
+  "branch",
+  "contour",
 ];
 const coverTones: CoverTone[] = ["coral", "sage", "blue", "lilac", "teal", "amber"];
 
 const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
-  cagent: { templates: ["network", "orbit", "honeycomb", "converge"], tones: ["coral", "lilac", "teal"] },
-  freertos: { templates: ["timeline", "orbit", "waveform", "balance"], tones: ["sage", "blue", "lilac"] },
-  嵌入式: { templates: ["chip", "waveform", "nested", "scan"], tones: ["blue", "amber", "sage"] },
-  linux: { templates: ["nested", "split", "ribbon", "path"], tones: ["lilac", "blue", "sage"] },
-  边缘ai: { templates: ["scan", "waveform", "orbit", "network"], tones: ["teal", "blue", "coral"] },
-  项目实践: { templates: ["converge", "bridge", "balance", "ribbon"], tones: ["amber", "sage", "coral"] },
+  cagent: {
+    templates: ["network", "orbit", "honeycomb", "branch", "spiral", "converge"],
+    tones: ["coral", "lilac", "teal"],
+  },
+  freertos: {
+    templates: ["timeline", "orbit", "waveform", "flow", "balance"],
+    tones: ["sage", "blue", "lilac"],
+  },
+  嵌入式: {
+    templates: ["chip", "waveform", "flow", "contour", "nested", "scan"],
+    tones: ["blue", "amber", "sage"],
+  },
+  linux: {
+    templates: ["nested", "split", "ribbon", "flow", "spiral", "path"],
+    tones: ["lilac", "blue", "sage"],
+  },
+  边缘ai: {
+    templates: ["scan", "contour", "flow", "waveform", "orbit", "network"],
+    tones: ["teal", "blue", "coral"],
+  },
+  项目实践: {
+    templates: ["converge", "bridge", "balance", "ribbon", "spiral", "flow"],
+    tones: ["amber", "sage", "coral"],
+  },
 };
 
 const formatDate = (date?: string) => {
