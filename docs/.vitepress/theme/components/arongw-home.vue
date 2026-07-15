@@ -2,6 +2,21 @@
 import { computed } from "vue";
 import { withBase } from "vitepress";
 import { usePosts } from "vitepress-theme-teek";
+import ArongwPostCover from "./arongw-post-cover.vue";
+
+type CoverTemplate = "network" | "timeline" | "chip" | "path" | "scan" | "converge";
+type CoverTone = "coral" | "sage" | "blue" | "lilac" | "teal" | "amber";
+
+interface CoverConfig {
+  template: CoverTemplate;
+  tone: CoverTone;
+  variant: 1 | 2 | 3;
+}
+
+interface CategoryCoverDefault {
+  templates: CoverTemplate[];
+  tone: CoverTone;
+}
 
 const tracks = [
   {
@@ -21,7 +36,17 @@ const tracks = [
 const posts = usePosts();
 
 const latestPosts = computed(() => posts.value.sortPostsByDate.slice(0, 12));
-const coverClasses = ["sage", "blue", "lilac", "teal", "amber", "slate"];
+const coverTemplates: CoverTemplate[] = ["network", "timeline", "chip", "path", "scan", "converge"];
+const coverTones: CoverTone[] = ["coral", "sage", "blue", "lilac", "teal", "amber"];
+
+const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
+  cagent: { templates: ["network", "path", "converge"], tone: "coral" },
+  freertos: { templates: ["timeline", "path", "converge"], tone: "sage" },
+  嵌入式: { templates: ["chip", "scan", "path"], tone: "blue" },
+  linux: { templates: ["path", "timeline", "chip"], tone: "lilac" },
+  边缘ai: { templates: ["scan", "network", "converge"], tone: "teal" },
+  项目实践: { templates: ["converge", "path", "timeline"], tone: "amber" },
+};
 
 const formatDate = (date?: string) => {
   if (!date) return "";
@@ -40,6 +65,38 @@ const getDescription = (post: (typeof latestPosts.value)[number]) => {
 
 const getPrimaryCategory = (post: (typeof latestPosts.value)[number]) => {
   return getTags(post)[0] || "Blog";
+};
+
+const hashString = (value: string) => {
+  return [...value].reduce((hash, character) => (hash * 31 + character.codePointAt(0)!) >>> 0, 0);
+};
+
+const getCoverConfig = (post: (typeof latestPosts.value)[number], index: number): CoverConfig => {
+  const hash = hashString(post.url || post.title || String(index));
+  const category = getPrimaryCategory(post).toLocaleLowerCase();
+  const categoryDefault = categoryCoverDefaults[category];
+  const rawCover = post.frontmatter.cover;
+  const cover: Record<string, unknown> =
+    rawCover && typeof rawCover === "object" && !Array.isArray(rawCover) ? (rawCover as Record<string, unknown>) : {};
+  const requestedTemplate = cover.template as CoverTemplate | undefined;
+  const requestedTone = cover.tone as CoverTone | undefined;
+  const requestedVariant = Number(cover.variant);
+  const templatePool = categoryDefault?.templates || coverTemplates;
+
+  return {
+    template:
+      requestedTemplate && coverTemplates.includes(requestedTemplate)
+        ? requestedTemplate
+        : templatePool[hash % templatePool.length],
+    tone:
+      requestedTone && coverTones.includes(requestedTone)
+        ? requestedTone
+        : categoryDefault?.tone || coverTones[(hash >>> 3) % coverTones.length],
+    variant:
+      requestedVariant >= 1 && requestedVariant <= 3
+        ? (requestedVariant as CoverConfig["variant"])
+        : ((((hash >>> 6) % 3) + 1) as CoverConfig["variant"]),
+  };
 };
 </script>
 
@@ -79,13 +136,8 @@ const getPrimaryCategory = (post: (typeof latestPosts.value)[number]) => {
       <div v-if="latestPosts.length" class="arongw-post-area">
         <div class="arongw-post-grid">
           <article v-for="(post, index) in latestPosts" :key="post.url" class="arongw-post-card">
-            <a
-              :href="post.url && withBase(post.url)"
-              class="arongw-post-card__cover"
-              :class="coverClasses[index % coverClasses.length]"
-              aria-hidden="true"
-            >
-              <span class="arongw-post-card__mark">{{ getPrimaryCategory(post).slice(0, 1) }}</span>
+            <a :href="post.url && withBase(post.url)" class="arongw-post-card__cover" tabindex="-1" aria-hidden="true">
+              <ArongwPostCover v-bind="getCoverConfig(post, index)" />
             </a>
 
             <div class="arongw-post-card__body">
