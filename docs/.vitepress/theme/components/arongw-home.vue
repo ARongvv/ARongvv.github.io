@@ -15,7 +15,7 @@ interface CoverConfig {
 
 interface CategoryCoverDefault {
   templates: CoverTemplate[];
-  tone: CoverTone;
+  tones: CoverTone[];
 }
 
 const tracks = [
@@ -40,12 +40,12 @@ const coverTemplates: CoverTemplate[] = ["network", "timeline", "chip", "path", 
 const coverTones: CoverTone[] = ["coral", "sage", "blue", "lilac", "teal", "amber"];
 
 const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
-  cagent: { templates: ["network", "path", "converge"], tone: "coral" },
-  freertos: { templates: ["timeline", "path", "converge"], tone: "sage" },
-  嵌入式: { templates: ["chip", "scan", "path"], tone: "blue" },
-  linux: { templates: ["path", "timeline", "chip"], tone: "lilac" },
-  边缘ai: { templates: ["scan", "network", "converge"], tone: "teal" },
-  项目实践: { templates: ["converge", "path", "timeline"], tone: "amber" },
+  cagent: { templates: ["network", "path", "converge"], tones: ["coral", "lilac", "teal"] },
+  freertos: { templates: ["timeline", "path", "converge"], tones: ["sage", "blue", "lilac"] },
+  嵌入式: { templates: ["chip", "scan", "path"], tones: ["blue", "amber", "sage"] },
+  linux: { templates: ["path", "timeline", "chip"], tones: ["lilac", "blue", "sage"] },
+  边缘ai: { templates: ["scan", "network", "converge"], tones: ["teal", "blue", "coral"] },
+  项目实践: { templates: ["converge", "path", "timeline"], tones: ["amber", "sage", "coral"] },
 };
 
 const formatDate = (date?: string) => {
@@ -82,6 +82,7 @@ const getCoverConfig = (post: (typeof latestPosts.value)[number], index: number)
   const requestedTone = cover.tone as CoverTone | undefined;
   const requestedVariant = Number(cover.variant);
   const templatePool = categoryDefault?.templates || coverTemplates;
+  const tonePool = categoryDefault?.tones || coverTones;
 
   return {
     template:
@@ -89,9 +90,7 @@ const getCoverConfig = (post: (typeof latestPosts.value)[number], index: number)
         ? requestedTemplate
         : templatePool[hash % templatePool.length],
     tone:
-      requestedTone && coverTones.includes(requestedTone)
-        ? requestedTone
-        : categoryDefault?.tone || coverTones[(hash >>> 3) % coverTones.length],
+      requestedTone && coverTones.includes(requestedTone) ? requestedTone : tonePool[(hash >>> 3) % tonePool.length],
     variant:
       requestedVariant >= 1 && requestedVariant <= 3
         ? (requestedVariant as CoverConfig["variant"])
