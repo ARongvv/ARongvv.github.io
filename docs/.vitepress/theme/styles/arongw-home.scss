@@ -236,7 +236,7 @@
 }
 
 .arongw-home__latest {
-  width: min(1480px, calc(100% - 48px));
+  width: min(1320px, calc(100% - 48px));
   margin: 64px auto 88px;
   background: var(--arongw-page-bg);
 }
@@ -280,7 +280,8 @@
 }
 
 .arongw-post-card {
-  height: 430px;
+  height: auto;
+  aspect-ratio: 70 / 90;
   overflow: hidden;
   display: grid;
   grid-template-rows: minmax(0, 55fr) minmax(0, 45fr);
@@ -453,6 +454,7 @@
 
   .arongw-post-card {
     height: 480px;
+    aspect-ratio: auto;
   }
 
   .arongw-post-card__body {
