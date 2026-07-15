@@ -280,10 +280,10 @@
 }
 
 .arongw-post-card {
-  min-height: 440px;
+  height: 430px;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 172px 1fr;
+  grid-template-rows: minmax(0, 55fr) minmax(0, 45fr);
   border-radius: 18px;
   color: var(--arongw-ink);
   transition:
@@ -452,8 +452,7 @@
   }
 
   .arongw-post-card {
-    min-height: 480px;
-    grid-template-rows: 190px 1fr;
+    height: 480px;
   }
 
   .arongw-post-card__body {
@@ -495,8 +494,7 @@
   }
 
   .arongw-post-card {
-    min-height: 450px;
-    grid-template-rows: 180px 1fr;
+    height: 450px;
   }
 
   .arongw-post-card__body {
