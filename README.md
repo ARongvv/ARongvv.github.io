@@ -224,3 +224,19 @@ cover:
 ## License
 
 [MIT](./LICENSE) License © 2025 [Teeker](https://github.com/Kele-Bingtang)
+
+```
+框架预设：Vite
+
+根目录：
+/
+
+输出目录：
+docs/.vitepress/dist
+
+编译命令：
+pnpm stub && pnpm docs:build
+
+安装命令：
+pnpm install --frozen-lockfile
+```
