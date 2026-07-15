@@ -77,6 +77,10 @@ export const teekConfig = defineTeekConfig({
       createYear: 2025,
       suffix: "ARongw",
     },
+    icpRecord: {
+      name: "桂ICP备2026002965号-1",
+      link: "https://beian.miit.gov.cn/",
+    },
     customHtml: `<span id="runtime"></span>`, // 需要搭配 .vitepress/theme/helper/useRuntime.ts 使用
     topMessage: [`<a title="GitHub" target="_blank" href="https://github.com/ARongvv">GitHub: ARongw</a>`],
   },
