@@ -24,6 +24,7 @@ type CoverTemplate =
   | "branch"
   | "contour";
 type CoverTone = "coral" | "sage" | "blue" | "lilac" | "teal" | "amber";
+type CoverSelection<T> = T | "random";
 
 interface CoverConfig {
   template: CoverTemplate;
@@ -133,19 +134,25 @@ const getCoverConfig = (post: (typeof latestPosts.value)[number], index: number)
   const rawCover = post.frontmatter.cover;
   const cover: Record<string, unknown> =
     rawCover && typeof rawCover === "object" && !Array.isArray(rawCover) ? (rawCover as Record<string, unknown>) : {};
-  const requestedTemplate = cover.template as CoverTemplate | undefined;
-  const requestedTone = cover.tone as CoverTone | undefined;
+  const requestedTemplate = cover.template as CoverSelection<CoverTemplate> | undefined;
+  const requestedTone = cover.tone as CoverSelection<CoverTone> | undefined;
   const requestedVariant = Number(cover.variant);
   const templatePool = categoryDefault?.templates || coverTemplates;
   const tonePool = categoryDefault?.tones || coverTones;
 
   return {
     template:
-      requestedTemplate && coverTemplates.includes(requestedTemplate)
-        ? requestedTemplate
-        : templatePool[hash % templatePool.length],
+      requestedTemplate === "random"
+        ? coverTemplates[(hash >>> 2) % coverTemplates.length]
+        : requestedTemplate && coverTemplates.includes(requestedTemplate)
+          ? requestedTemplate
+          : templatePool[hash % templatePool.length],
     tone:
-      requestedTone && coverTones.includes(requestedTone) ? requestedTone : tonePool[(hash >>> 3) % tonePool.length],
+      requestedTone === "random"
+        ? coverTones[(hash >>> 7) % coverTones.length]
+        : requestedTone && coverTones.includes(requestedTone)
+          ? requestedTone
+          : tonePool[(hash >>> 3) % tonePool.length],
     variant:
       requestedVariant >= 1 && requestedVariant <= 3
         ? (requestedVariant as CoverConfig["variant"])
