@@ -197,7 +197,7 @@
   color: var(--arongw-ink);
   background: transparent;
   font-family: var(--arongw-font-serif);
-  font-size: clamp(44px, 5.1vw, 76px);
+  font-size: clamp(38px, 4.4vw, 64px);
   font-weight: 700;
   line-height: 1.06;
   transition: color 280ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -1678,7 +1678,7 @@
   }
 
   .arongw-home__nav-item {
-    font-size: clamp(34px, 11vw, 48px);
+    font-size: clamp(30px, 9vw, 42px);
   }
 
   .arongw-home__section-head,

@@ -39,16 +39,20 @@ interface CategoryCoverDefault {
 
 const tracks = [
   {
-    title: "cAGENT",
+    title: "Agent",
     link: "/cagent/intro",
   },
   {
-    title: "嵌入式",
-    link: "/embedded/intro",
+    title: "Linux",
+    link: "/linux/system-commands",
   },
   {
-    title: "FreeRTOS",
+    title: "嵌入式",
     link: "/freertos/intro",
+  },
+  {
+    title: "杂谈",
+    link: "/misc/tech-sharing/tools-efficiency",
   },
 ];
 
@@ -78,13 +82,9 @@ const coverTemplates: CoverTemplate[] = [
 const coverTones: CoverTone[] = ["coral", "sage", "blue", "lilac", "teal", "amber"];
 
 const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
-  cagent: {
+  agent: {
     templates: ["network", "orbit", "honeycomb", "branch", "spiral", "converge"],
     tones: ["coral", "lilac", "teal"],
-  },
-  freertos: {
-    templates: ["timeline", "orbit", "waveform", "flow", "balance"],
-    tones: ["sage", "blue", "lilac"],
   },
   嵌入式: {
     templates: ["chip", "waveform", "flow", "contour", "nested", "scan"],
@@ -94,13 +94,9 @@ const categoryCoverDefaults: Record<string, CategoryCoverDefault> = {
     templates: ["nested", "split", "ribbon", "flow", "spiral", "path"],
     tones: ["lilac", "blue", "sage"],
   },
-  边缘ai: {
-    templates: ["scan", "contour", "flow", "waveform", "orbit", "network"],
-    tones: ["teal", "blue", "coral"],
-  },
-  项目实践: {
-    templates: ["converge", "bridge", "balance", "ribbon", "spiral", "flow"],
-    tones: ["amber", "sage", "coral"],
+  杂谈: {
+    templates: ["bridge", "balance", "ribbon", "path", "contour", "flow"],
+    tones: ["amber", "coral", "lilac"],
   },
 };
 

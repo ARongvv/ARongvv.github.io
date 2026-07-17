@@ -67,6 +67,7 @@ export const teekConfig = defineTeekConfig({
     sidebarOption: {
       initItems: false,
       ignoreIndexMd: true,
+      ignoreList: [".gitkeep"],
     },
   },
   footerInfo: {

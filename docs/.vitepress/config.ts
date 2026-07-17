@@ -89,9 +89,10 @@ export default defineConfig({
     },
     nav: [
       { text: "首页", link: "/" },
-      { text: "cAGENT", link: "/cagent/intro", activeMatch: "/01.cAGENT/" },
-      { text: "嵌入式", link: "/embedded/intro", activeMatch: "/05.嵌入式/" },
-      { text: "FreeRTOS", link: "/freertos/intro", activeMatch: "/10.FreeRTOS/" },
+      { text: "Agent", link: "/cagent/intro", activeMatch: "/01.Agent/" },
+      { text: "Linux", link: "/linux/system-commands", activeMatch: "/05.Linux/" },
+      { text: "嵌入式", link: "/freertos/intro", activeMatch: "/10.嵌入式/" },
+      { text: "杂谈", link: "/misc/tech-sharing/tools-efficiency", activeMatch: "/20.杂谈/" },
       {
         text: "功能页",
         items: [

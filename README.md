@@ -118,14 +118,12 @@ cover:
 
 省略 `template` 或 `tone` 时，系统会读取文章 `categories` 的第一个值，并根据文章路径从对应分类的专属池中稳定选择。选择结果不会在刷新或重新构建后变化。
 
-| 分类     | 专属模板池                                                      | 专属颜色池               |
-| -------- | --------------------------------------------------------------- | ------------------------ |
-| cAGENT   | `network`、`orbit`、`honeycomb`、`branch`、`spiral`、`converge` | `coral`、`lilac`、`teal` |
-| FreeRTOS | `timeline`、`orbit`、`waveform`、`flow`、`balance`              | `sage`、`blue`、`lilac`  |
-| 嵌入式   | `chip`、`waveform`、`flow`、`contour`、`nested`、`scan`         | `blue`、`amber`、`sage`  |
-| Linux    | `nested`、`split`、`ribbon`、`flow`、`spiral`、`path`           | `lilac`、`blue`、`sage`  |
-| 边缘 AI  | `scan`、`contour`、`flow`、`waveform`、`orbit`、`network`       | `teal`、`blue`、`coral`  |
-| 项目实践 | `converge`、`bridge`、`balance`、`ribbon`、`spiral`、`flow`     | `amber`、`sage`、`coral` |
+| 分类   | 专属模板池                                                      | 专属颜色池                |
+| ------ | --------------------------------------------------------------- | ------------------------- |
+| Agent  | `network`、`orbit`、`honeycomb`、`branch`、`spiral`、`converge` | `coral`、`lilac`、`teal`  |
+| Linux  | `nested`、`split`、`ribbon`、`flow`、`spiral`、`path`           | `lilac`、`blue`、`sage`   |
+| 嵌入式 | `chip`、`waveform`、`flow`、`contour`、`nested`、`scan`         | `blue`、`amber`、`sage`   |
+| 杂谈   | `bridge`、`balance`、`ribbon`、`path`、`contour`、`flow`        | `amber`、`coral`、`lilac` |
 
 ### 随机选项
 
