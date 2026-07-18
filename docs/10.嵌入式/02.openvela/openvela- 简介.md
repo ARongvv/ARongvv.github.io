@@ -14,4 +14,6 @@ cover:
   variant: 2
 ---
 
+# openvela 简介
+
 这里用于记录 openvela 的基础概念、开发环境与相关实践。

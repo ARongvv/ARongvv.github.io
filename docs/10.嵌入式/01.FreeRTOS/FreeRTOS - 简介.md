@@ -14,4 +14,6 @@ cover:
   variant: 1
 ---
 
+# FreeRTOS 简介
+
 这里用于记录 FreeRTOS 的基础概念、任务调度与项目实践。
