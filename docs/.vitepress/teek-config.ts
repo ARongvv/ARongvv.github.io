@@ -88,7 +88,10 @@ export const teekConfig = defineTeekConfig({
   footerGroup: [
     {
       title: "我的主页",
-      links: [{ name: "GitHub", link: "https://github.com/ARongvv" }],
+      links: [
+        { name: "GitHub", link: "https://github.com/ARongvv" },
+        { name: "Email", link: "mailto:3234657670@qq.com" },
+      ],
     },
     {
       title: "内部链接",
