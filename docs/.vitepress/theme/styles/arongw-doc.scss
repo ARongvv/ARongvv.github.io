@@ -1,0 +1,58 @@
+/* Keep document and catalogue pages in the same haze-blue palette as the custom home. */
+body:has(.VPContent:not(.is-home)) {
+  --vp-c-bg: #f3f7fb;
+  --vp-c-bg-alt: #eef4f8;
+  --vp-c-bg-elv: #f8fbfd;
+  --vp-c-bg-soft: #e9f0f5;
+  --vp-c-border: #cad8e3;
+  --vp-c-divider: #dbe5ed;
+  --vp-c-gutter: #dbe5ed;
+  --vp-c-text-1: #18202a;
+  --vp-c-text-2: #4f5e6c;
+  --vp-c-text-3: #748190;
+  --vp-c-brand-1: #3d6fa3;
+  --vp-c-brand-2: #4f86bd;
+  --vp-c-brand-3: #6699cc;
+  --vp-c-brand-soft: #e8f1fa;
+  --arongw-doc-sidebar-bg: #e4edf4;
+  --vp-nav-bg-color: #f3f7fb;
+  --vp-sidebar-bg-color: var(--arongw-doc-sidebar-bg);
+  --vp-local-nav-bg-color: #f3f7fb;
+}
+
+:root.dark body:has(.VPContent:not(.is-home)) {
+  --vp-c-bg: #11161d;
+  --vp-c-bg-alt: #151c24;
+  --vp-c-bg-elv: #18202a;
+  --vp-c-bg-soft: #202a35;
+  --vp-c-border: #344250;
+  --vp-c-divider: #2b3744;
+  --vp-c-gutter: #2b3744;
+  --vp-c-text-1: #f2f5f8;
+  --vp-c-text-2: #cbd5df;
+  --vp-c-text-3: #9eacba;
+  --vp-c-brand-1: #7db0e0;
+  --vp-c-brand-2: #93bee6;
+  --vp-c-brand-3: #9fc7ea;
+  --vp-c-brand-soft: rgba(102, 153, 204, 0.18);
+  --arongw-doc-sidebar-bg: #17212c;
+  --vp-nav-bg-color: #11161d;
+  --vp-sidebar-bg-color: var(--arongw-doc-sidebar-bg);
+  --vp-local-nav-bg-color: #11161d;
+}
+
+body:has(.VPContent:not(.is-home)) {
+  .VPContent:not(.is-home),
+  .VPDoc,
+  .VPDoc .container,
+  .VPLocalNav,
+  .VPNavBar:not(.home),
+  .VPNavBar:not(.home) .content-body {
+    background-color: var(--vp-c-bg);
+  }
+
+  .VPSidebar,
+  .VPNavBar.has-sidebar:not(.home) > .wrapper > .container > .title {
+    background-color: var(--arongw-doc-sidebar-bg);
+  }
+}
